@@ -15,11 +15,14 @@ mpg.password = KXXXXXXXU
 mpg.leagues.include = KX24XMUJ,KLGXSSUM
 mpg.leagues.exclude = LJT3FXDX
 
+# Include/exclude users (MPG id) ; by default users intersection of leagues is used
+mpg.users.include = 955966
+mpg.users.exclude=1570437,2237823
+
 # Database connection
 spring.datasource.url=jdbc:mysql://localhost:3306/db
 spring.datasource.username=foo
 spring.datasource.password=bar
-
 
 # Temporary display all SQL queries
 #spring.jpa.properties.hibernate.format_sql=true

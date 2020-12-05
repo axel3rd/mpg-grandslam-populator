@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.users.exclude=1570437,2237823" })
 @Sql({ "/schema-test.sql", "/datas-test.sql" })
 class GrandslamPopulatorBatchApplicationTests extends AbstractTestMpgData {
 

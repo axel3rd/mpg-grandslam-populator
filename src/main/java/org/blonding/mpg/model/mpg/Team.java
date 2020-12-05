@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Team {
 
+    private String userId;
+
     @JsonProperty("name")
     private String name;
 
@@ -14,6 +16,10 @@ public class Team {
 
     @JsonProperty("lastname")
     private String lastName;
+
+    public String getUserId() {
+        return userId;
+    }
 
     public String getName() {
         return this.name;

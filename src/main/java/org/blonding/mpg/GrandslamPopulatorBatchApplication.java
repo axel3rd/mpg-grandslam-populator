@@ -1,13 +1,13 @@
 package org.blonding.mpg;
 
-import org.blonding.mpg.tasklet.DataBaseTmpTasklet;
 import org.blonding.mpg.tasklet.MpgDatasTasklet;
+import org.blonding.mpg.tasklet.WhichUsersTasklet;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.job.builder.FlowBuilder;
-import org.springframework.batch.core.job.flow.Flow;
+import org.springframework.batch.core.listener.ExecutionContextPromotionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,12 +22,6 @@ public class GrandslamPopulatorBatchApplication {
     @Autowired
     private StepBuilderFactory steps;
 
-    @Autowired
-    private DataBaseTmpTasklet taskTmpkDB;
-
-    @Autowired
-    private MpgDatasTasklet mpgDatas;
-
     GrandslamPopulatorBatchApplication() {
         super();
     }
@@ -37,18 +31,25 @@ public class GrandslamPopulatorBatchApplication {
     }
 
     @Bean
-    public Flow flowTmpDB() {
-        return new FlowBuilder<Flow>("flowCheckDB").start(steps.get("stepCheckDB").tasklet(taskTmpkDB).build()).build();
+    public Step stepMpgDatas(MpgDatasTasklet mpgDatas) {
+        return steps.get("stepMpgDatas").listener(promotionListener()).tasklet(mpgDatas).build();
     }
 
     @Bean
-    public Flow flowMpgDatas() {
-        return new FlowBuilder<Flow>("flowMpgDatas").start(steps.get("stepMpgDatas").tasklet(mpgDatas).build()).build();
+    public Step stepWhichUsers(WhichUsersTasklet whichUsers) {
+        return steps.get("stepWhichUsers").listener(promotionListener()).tasklet(whichUsers).build();
     }
 
     @Bean
-    public Job jobGrandSlamPopulator(JobBuilderFactory jobBuilderFactory) {
-        return jobBuilderFactory.get("jobGrandSlamPopulator").start(flowMpgDatas()).end().build();
+    public Job jobGrandSlamPopulator(JobBuilderFactory jobBuilderFactory, MpgDatasTasklet mpgDatas, WhichUsersTasklet whichUsers) {
+        return jobBuilderFactory.get("jobGrandSlamPopulator").start(stepMpgDatas(mpgDatas)).next(stepWhichUsers(whichUsers)).build();
+    }
+
+    @Bean
+    public ExecutionContextPromotionListener promotionListener() {
+        ExecutionContextPromotionListener listener = new ExecutionContextPromotionListener();
+        listener.setKeys(new String[] { "leagues" });
+        return listener;
     }
 
 }

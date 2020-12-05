@@ -23,6 +23,12 @@ public class MpgConfig {
     @Value("${mpg.leagues.exclude:}#{T(java.util.Collections).emptyList()}")
     private List<String> leaguesExclude;
 
+    @Value("${mpg.users.include:}#{T(java.util.Collections).emptyList()}")
+    private List<Long> usersInclude;
+
+    @Value("${mpg.users.exclude:}#{T(java.util.Collections).emptyList()}")
+    private List<Long> usersExclude;
+
     public String getEmail() {
         return email;
     }
@@ -41,5 +47,13 @@ public class MpgConfig {
 
     public List<String> getLeaguesExclude() {
         return leaguesExclude;
+    }
+
+    public List<Long> getUsersInclude() {
+        return usersInclude;
+    }
+
+    public List<Long> getUsersExclude() {
+        return usersExclude;
     }
 }

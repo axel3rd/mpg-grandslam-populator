@@ -29,6 +29,9 @@ public class MpgConfig {
     @Value("${mpg.users.exclude:}#{T(java.util.Collections).emptyList()}")
     private List<Long> usersExclude;
 
+    @Value("${job.check.only:false}")
+    private boolean onlyCheckDatas;
+
     public String getEmail() {
         return email;
     }
@@ -55,5 +58,9 @@ public class MpgConfig {
 
     public List<Long> getUsersExclude() {
         return usersExclude;
+    }
+
+    public boolean isOnlyCheckDatas() {
+        return onlyCheckDatas;
     }
 }

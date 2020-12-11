@@ -8,6 +8,7 @@ public class Rank {
 
     @JsonProperty("teamid")
     private String teamId;
+    private int played;
     private int victory;
     private int draw;
     private int defeat;
@@ -15,6 +16,10 @@ public class Rank {
 
     public String getTeamId() {
         return teamId;
+    }
+
+    public int getPlayed() {
+        return played;
     }
 
     public int getVictory() {

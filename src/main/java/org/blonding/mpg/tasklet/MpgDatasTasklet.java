@@ -36,7 +36,7 @@ public class MpgDatasTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-
+        LOG.info("--- Retrieve MPG Datas and Leagues to use...");
         WebClient client = WebClient.builder().defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).baseUrl(mpgConfig.getUrl())
                 .build();
         String token = client.post().uri("/user/signIn").accept(MediaType.APPLICATION_JSON)
@@ -60,6 +60,11 @@ public class MpgDatasTasklet implements Tasklet {
                                 .header("client-version", MPG_CLIENT_VERSION).header("authorization", token).retrieve().toEntity(LeagueRanking.class)
                                 .block().getBody());
             }
+        }
+        if (leagues.size() < 2) {
+            final String msg = "GrandSlam Cup requires two leagues minimum";
+            LOG.error(msg);
+            throw new UnsupportedOperationException(msg);
         }
         contribution.getStepExecution().getExecutionContext().put("leagues", leagues);
         return RepeatStatus.FINISHED;

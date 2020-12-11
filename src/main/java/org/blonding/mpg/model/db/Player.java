@@ -1,9 +1,13 @@
 package org.blonding.mpg.model.db;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Player {
@@ -12,20 +16,34 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String mpgId;
+    private Long mpgId;
 
     private String name;
 
-    public Long getId() {
-        return id;
+    @OneToMany
+    @JoinTable(name = "team")
+    private List<Team> teams;
+
+    public Player() {
+        super();
     }
 
-    public String getMpgId() {
+    public Player(Long mpgId, String name) {
+        super();
+        this.mpgId = mpgId;
+        this.name = name;
+    }
+
+    public Long getMpgId() {
         return mpgId;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

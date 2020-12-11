@@ -20,12 +20,16 @@ mpg.users.include = 955966
 mpg.users.exclude=1570437,2237823
 
 # Database connection
-spring.datasource.url=jdbc:mysql://localhost:3306/db
-spring.datasource.username=foo
-spring.datasource.password=bar
+spring.datasource.url = jdbc:mysql://localhost:3306/db
+spring.datasource.username = foo
+spring.datasource.password = bar
+
+# Only check MPG data to evaluate leagues/users includes/excludes.
+# Use '--job.check.only=true' as command line parameter
+#job.check.only = true
 
 # Temporary display all SQL queries
-#spring.jpa.properties.hibernate.format_sql=true
-#logging.level.org.hibernate.SQL=DEBUG
+#spring.jpa.properties.hibernate.format_sql = true
+#logging.level.org.hibernate.SQL = DEBUG
 
 ```

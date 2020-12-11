@@ -11,6 +11,7 @@ import org.blonding.mpg.model.mpg.League;
 import org.blonding.mpg.model.mpg.LeagueRanking;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -28,6 +29,7 @@ public class WhichUsersTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+        LOG.info("--- Calculate users intersection...");
         @SuppressWarnings("unchecked")
         Map<League, LeagueRanking> leagues = (Map<League, LeagueRanking>) chunkContext.getStepContext().getStepExecution().getJobExecution()
                 .getExecutionContext().get("leagues");
@@ -53,6 +55,14 @@ public class WhichUsersTasklet implements Tasklet {
                 LOG.info("User '{}' (id={}) taken into account", u.getName(), u.getMpgId());
                 users.add(u);
             }
+        }
+        if (mpgConfig.isOnlyCheckDatas()) {
+            contribution.getStepExecution().setExitStatus(ExitStatus.STOPPED);
+        }
+        if (users.size() < 2) {
+            final String msg = "GrandSlam Cup requires two users minimum";
+            LOG.error(msg);
+            throw new UnsupportedOperationException(msg);
         }
         contribution.getStepExecution().getExecutionContext().put("users", users);
         return RepeatStatus.FINISHED;

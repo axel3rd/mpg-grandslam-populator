@@ -7,6 +7,7 @@ public class League {
 
     private String id;
     private String name;
+    private Championship championship;
     private LeagueStatus leagueStatus;
 
     public String getId() {
@@ -19,6 +20,10 @@ public class League {
 
     public LeagueStatus getLeagueStatus() {
         return leagueStatus;
+    }
+
+    public Championship getChampionship() {
+        return championship;
     }
 
 }

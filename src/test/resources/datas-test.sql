@@ -25,7 +25,7 @@ INSERT INTO `league` (`id`, `mpg_id`, `type`, `name`, `year`, `status`, `grand_s
     (36, 'MLEFEX6G', 'L2', 'PAPIER', '2020/2', 'Running', 9, 5);
 
 INSERT INTO `team` (`id`, `player_id`, `league_id`, `name`, `short_name`, `victory`, `draw`, `defeat`, `goal_diff`) VALUES
-    (214, 79, 33, 'Paillettes FC', '🦄', 2, 2, 4, -7),
+    (214, 79, 33, 'Paillettes FC', 'PFC', 2, 2, 4, -7),
     (215, 77, 33, 'L’ascenseur Nancéen', 'ASN', 4, 4, 0, 9),
     (216, 76, 33, 'L2/D2', 'LDS', 3, 2, 3, 6),
     (217, 80, 33, 'Doudou FC', 'DFC', 4, 2, 2, -2),
@@ -33,7 +33,7 @@ INSERT INTO `team` (`id`, `player_id`, `league_id`, `name`, `short_name`, `victo
     (219, 75, 33, '4 mori', '4MO', 4, 2, 2, 4),
     (220, 74, 33, 'Harry Saint-Germain', 'HSG', 3, 1, 4, -3),
     (221, 78, 33, 'Poney aux Fraises', 'PAF', 2, 1, 5, -5),
-    (222, 74, 34, 'North London', '🔴⚪', 3, 0, 0, 6),
+    (222, 74, 34, 'North London', 'NLL', 3, 0, 0, 6),
     (223, 73, 34, 'Axel Football Club', 'AFC', 3, 0, 0, 11),
     (224, 80, 34, 'Exeter Football Club', 'EFC', 1, 0, 2, -1),
     (225, 79, 34, 'Queen of Cheat', 'QOC', 1, 1, 1, 1),

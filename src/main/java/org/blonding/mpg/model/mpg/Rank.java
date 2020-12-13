@@ -1,10 +1,14 @@
 package org.blonding.mpg.model.mpg;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Rank {
+public class Rank implements Serializable {
+
+    private static final long serialVersionUID = 7331725661359464274L;
 
     @JsonProperty("teamid")
     private String teamId;

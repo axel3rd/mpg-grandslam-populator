@@ -1,6 +1,10 @@
 package org.blonding.mpg.model.db;
 
-public class MpgUser {
+import java.io.Serializable;
+
+public class MpgUser implements Serializable {
+
+    private static final long serialVersionUID = 5332602874805437205L;
 
     private long mpgId;
     private String name;

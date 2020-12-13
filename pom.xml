@@ -67,6 +67,16 @@
             <version>0.1.1.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- For old MySQL version usage -->
+        <!-- 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.49</version>
+        </dependency>
+         -->
+    
     </dependencies>
 
     <build>
@@ -74,6 +84,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <dependencies>
+                    <!-- The following enables the "thin jar" deployment option. -->
+                     <dependency> <groupId>org.springframework.boot.experimental</groupId> <artifactId>spring-boot-thin-layout</artifactId> <version>1.0.26.RELEASE</version> 
+                        </dependency> 
+                </dependencies>
             </plugin>
         </plugins>
     </build>

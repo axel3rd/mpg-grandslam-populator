@@ -14,11 +14,10 @@
     <description>MPG GrandSlam Populator Batch</description>
     <properties>
         <java.version>11</java.version>
-        <sonar.projectKey>axel3rd_mpg-grandslam-populator</sonar.projectKey>
+        <sonar.projectKey>org.blonding.mpg:grandslam-populator-batch</sonar.projectKey>
         <sonar.organization>axel3rd-github</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

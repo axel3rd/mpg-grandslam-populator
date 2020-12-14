@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=org.blonding.mpg%3Agrandslam-populator-batch&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.blonding.mpg%3Agrandslam-populator-batch)
+
 # MPG GrandSlam Populator
 
 Routines to populate [MPG GrandSlam](https://github.com/mansuydejean/mpggrandslam) database.

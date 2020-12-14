@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS `team`;
 DROP TABLE IF EXISTS `league`;
-DROP TABLE IF EXISTS `grand_slam`;
+DROP TABLE IF EXISTS `grand_slam_bonus`;
 DROP TABLE IF EXISTS `player`;
+DROP TABLE IF EXISTS `grand_slam`;
 
 CREATE TABLE IF NOT EXISTS `player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,6 +32,19 @@ CREATE TABLE IF NOT EXISTS `league` (
   KEY `IDX_3EB4C31831D0A180` (`grand_slam_id`), 
   CONSTRAINT `FK_3EB4C31831D0A180` FOREIGN KEY (`grand_slam_id`) REFERENCES `grand_slam` (`id`) 
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `grand_slam_bonus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `player_id` int(11) NOT NULL,
+  `grand_slam_id` int(11) NOT NULL,
+  `label` varchar(50) NOT NULL,
+  `nb_points` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_566760D099E6F5DF` (`player_id`),
+  KEY `IDX_566760D031D0A180` (`grand_slam_id`),
+  CONSTRAINT `FK_566760D031D0A180` FOREIGN KEY (`grand_slam_id`) REFERENCES `grand_slam` (`id`),
+  CONSTRAINT `FK_566760D099E6F5DF` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `team` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

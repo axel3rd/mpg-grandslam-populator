@@ -24,6 +24,12 @@ INSERT INTO `league` (`id`, `mpg_id`, `type`, `name`, `year`, `status`, `grand_s
     (35, 'MLAX7HMK', 'L1', 'CARTON', '2020/2', 'Running', 9, 5),
     (36, 'MLEFEX6G', 'L2', 'PAPIER', '2020/2', 'Running', 9, 5);
 
+INSERT INTO `grand_slam_bonus` (`id`, `player_id`, `grand_slam_id`, `label`, `nb_points`) VALUES
+    (1, 73, 7, 'Victoire LDC', 3),
+    (2, 77, 7, 'Victoire LDC', 3),
+    (3, 74, 7, '2e LDC', 1),
+    (4, 76, 7, '2e LDC', 1);    
+    
 INSERT INTO `team` (`id`, `player_id`, `league_id`, `name`, `short_name`, `victory`, `draw`, `defeat`, `goal_diff`) VALUES
     (214, 79, 33, 'Paillettes FC', 'PFC', 2, 2, 4, -7),
     (215, 77, 33, 'L’ascenseur Nancéen', 'ASN', 4, 4, 0, 9),

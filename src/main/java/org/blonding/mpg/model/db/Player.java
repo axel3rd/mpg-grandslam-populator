@@ -24,6 +24,10 @@ public class Player {
     @JoinTable(name = "team")
     private List<Team> teams;
 
+    @OneToMany
+    @JoinTable(name = "grand_slam_bonus")
+    private List<GrandSlamBonus> grandSlamBonus;
+
     public Player() {
         super();
     }

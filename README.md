@@ -1,4 +1,4 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=org.blonding.mpg%3Agrandslam-populator-batch&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.blonding.mpg%3Agrandslam-populator-batch)
+![CI Build](https://github.com/axel3rd/mpg-grandslam-populator/workflows/CI%20Build/badge.svg) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=org.blonding.mpg%3Agrandslam-populator-batch&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.blonding.mpg%3Agrandslam-populator-batch)
 
 # MPG GrandSlam Populator
 

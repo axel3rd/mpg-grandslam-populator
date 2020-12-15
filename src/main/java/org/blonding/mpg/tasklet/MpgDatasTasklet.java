@@ -41,7 +41,7 @@ public class MpgDatasTasklet implements Tasklet {
                 .build();
         String token = client.post().uri("/user/signIn").accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(new UserSignInRequest(mpgConfig.getEmail(), mpgConfig.getPassword())), UserSignInRequest.class).retrieve()
-                .bodyToMono(UserSignIn.class).block().getToken();
+                .bodyToMono(UserSignIn.class).blockOptional().orElseThrow().getToken();
         Dashboard dasboard = client.get().uri("/user/dashboard").accept(MediaType.APPLICATION_JSON).header("client-version", MPG_CLIENT_VERSION)
                 .header("authorization", token).retrieve().toEntity(Dashboard.class).blockOptional().orElseThrow().getBody();
 

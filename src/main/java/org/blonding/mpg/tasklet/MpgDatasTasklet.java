@@ -41,10 +41,12 @@ public class MpgDatasTasklet implements Tasklet {
                 .build();
         String token = client.post().uri("/user/signIn").accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(new UserSignInRequest(mpgConfig.getEmail(), mpgConfig.getPassword())), UserSignInRequest.class).retrieve()
-                .bodyToMono(UserSignIn.class).block().getToken();
+                .bodyToMono(UserSignIn.class).blockOptional().orElseThrow().getToken();
         Dashboard dasboard = client.get().uri("/user/dashboard").accept(MediaType.APPLICATION_JSON).header("client-version", MPG_CLIENT_VERSION)
-                .header("authorization", token).retrieve().toEntity(Dashboard.class).block().getBody();
-
+                .header("authorization", token).retrieve().toEntity(Dashboard.class).blockOptional().orElseThrow().getBody();
+        if (dasboard == null) {
+            throw new UnsupportedOperationException("The 'dasboard' cannot be null here");
+        }
         Map<League, LeagueRanking> leagues = new HashMap<>();
         for (League league : dasboard.getLeagues()) {
             if (!LeagueStatus.GAMES.equals(league.getLeagueStatus())) {

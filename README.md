@@ -1,3 +1,5 @@
+[![CI Build](https://github.com/axel3rd/mpg-grandslam-populator/workflows/CI%20Build/badge.svg)](https://github.com/axel3rd/mpg-grandslam-populator/actions?query=workflow%3A%22CI+Build%22) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=org.blonding.mpg%3Agrandslam-populator-batch&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.blonding.mpg%3Agrandslam-populator-batch) [![Security Analysis](https://github.com/axel3rd/mpg-grandslam-populator/workflows/Security%20Analysis/badge.svg)](https://github.com/axel3rd/mpg-grandslam-populator/actions?query=workflow%3A%22Security+Analysis%22)
+
 # MPG GrandSlam Populator
 
 Routines to populate [MPG GrandSlam](https://github.com/mansuydejean/mpggrandslam) database.

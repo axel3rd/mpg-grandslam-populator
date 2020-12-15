@@ -14,8 +14,10 @@
     <description>MPG GrandSlam Populator Batch</description>
     <properties>
         <java.version>11</java.version>
+        <sonar.projectKey>org.blonding.mpg:grandslam-populator-batch</sonar.projectKey>
+        <sonar.organization>axel3rd-github</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,6 +48,10 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-test</artifactId>
             <scope>test</scope>
@@ -67,7 +73,7 @@
             <version>0.1.1.RELEASE</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- For old MySQL version usage -->
         <!-- 
         <dependency>
@@ -76,7 +82,7 @@
             <version>5.1.49</version>
         </dependency>
          -->
-    
+
     </dependencies>
 
     <build>
@@ -86,9 +92,31 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <dependencies>
                     <!-- The following enables the "thin jar" deployment option. -->
-                     <dependency> <groupId>org.springframework.boot.experimental</groupId> <artifactId>spring-boot-thin-layout</artifactId> <version>1.0.26.RELEASE</version> 
-                        </dependency> 
+                    <dependency>
+                        <groupId>org.springframework.boot.experimental</groupId>
+                        <artifactId>spring-boot-thin-layout</artifactId>
+                        <version>1.0.26.RELEASE</version>
+                    </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

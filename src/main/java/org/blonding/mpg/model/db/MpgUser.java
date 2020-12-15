@@ -2,6 +2,9 @@ package org.blonding.mpg.model.db;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class MpgUser implements Serializable {
 
     private static final long serialVersionUID = 5332602874805437205L;
@@ -36,7 +39,12 @@ public class MpgUser implements Serializable {
             return false;
         }
         MpgUser other = (MpgUser) o;
-        return getMpgId() == other.getMpgId() && getName().equals(other.getName());
+        return new EqualsBuilder().append(mpgId, other.getMpgId()).append(name, other.getName()).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(mpgId).append(name).toHashCode();
     }
 
 }

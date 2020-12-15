@@ -32,7 +32,10 @@ public class DataBaseUpdateUsersTasklet implements Tasklet {
         LOG.info("--- Update players names...");
         @SuppressWarnings("unchecked")
         List<MpgUser> users = (List<MpgUser>) contribution.getStepExecution().getJobExecution().getExecutionContext().get("users");
-        Map<Long, String> usersMap = users.stream().collect(Collectors.toMap(MpgUser::getMpgId, user -> user.getName()));
+        if (users == null) {
+            throw new UnsupportedOperationException("Object 'users' cannot be null here");
+        }
+        Map<Long, String> usersMap = users.stream().collect(Collectors.toMap(MpgUser::getMpgId, MpgUser::getName));
 
         List<Player> players = playerRepository.findAll();
         for (Iterator<Player> it = players.iterator(); it.hasNext();) {

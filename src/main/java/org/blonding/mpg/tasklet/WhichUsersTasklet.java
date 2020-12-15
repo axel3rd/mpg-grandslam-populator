@@ -33,6 +33,9 @@ public class WhichUsersTasklet implements Tasklet {
         @SuppressWarnings("unchecked")
         Map<League, LeagueRanking> leagues = (Map<League, LeagueRanking>) chunkContext.getStepContext().getStepExecution().getJobExecution()
                 .getExecutionContext().get("leagues");
+        if (leagues == null) {
+            throw new UnsupportedOperationException("Object 'leagues' cannot be null here");
+        }
         List<MpgUser> usersTmp = new ArrayList<>();
         for (LeagueRanking lr : leagues.values()) {
             List<MpgUser> currentTeamUsers = lr.getTeams().values().stream()

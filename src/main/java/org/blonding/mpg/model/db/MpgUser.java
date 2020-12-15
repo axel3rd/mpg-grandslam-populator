@@ -39,7 +39,7 @@ public class MpgUser implements Serializable {
             return false;
         }
         MpgUser other = (MpgUser) o;
-        return new EqualsBuilder().appendSuper(super.equals(o)).append(mpgId, other.getMpgId()).append(name, other.getName()).isEquals();
+        return new EqualsBuilder().append(mpgId, other.getMpgId()).append(name, other.getName()).isEquals();
     }
 
     @Override

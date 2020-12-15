@@ -21,8 +21,6 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sun.istack.NotNull;
-
 @Component
 public class DataBaseUpdateLeaguesTasklet implements Tasklet {
 
@@ -44,9 +42,11 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
         GrandSlam gs = gsRunning.stream().findFirst().orElseThrow();
 
         @SuppressWarnings("unchecked")
-        @NotNull
         Map<League, LeagueRanking> leaguesMpgOriginal = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution()
                 .getExecutionContext().get("leagues");
+        if (leaguesMpgOriginal == null) {
+            throw new UnsupportedOperationException("Object 'leaguesMpgOriginal' cannot be null here");
+        }
         // Copy to new map
         Map<League, LeagueRanking> leaguesMpg = leaguesMpgOriginal.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));

@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import com.sun.istack.NotNull;
+
 @Component
 public class DataBaseUpdateUsersTasklet implements Tasklet {
 
@@ -31,8 +33,9 @@ public class DataBaseUpdateUsersTasklet implements Tasklet {
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Update players names...");
         @SuppressWarnings("unchecked")
+        @NotNull
         List<MpgUser> users = (List<MpgUser>) contribution.getStepExecution().getJobExecution().getExecutionContext().get("users");
-        Map<Long, String> usersMap = users.stream().collect(Collectors.toMap(MpgUser::getMpgId, user -> user.getName()));
+        Map<Long, String> usersMap = users.stream().collect(Collectors.toMap(MpgUser::getMpgId, MpgUser::getName));
 
         List<Player> players = playerRepository.findAll();
         for (Iterator<Player> it = players.iterator(); it.hasNext();) {

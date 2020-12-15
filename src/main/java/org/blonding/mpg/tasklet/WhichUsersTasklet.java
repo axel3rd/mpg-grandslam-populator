@@ -19,6 +19,8 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.sun.istack.NotNull;
+
 @Component
 public class WhichUsersTasklet implements Tasklet {
 
@@ -31,6 +33,7 @@ public class WhichUsersTasklet implements Tasklet {
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Calculate users intersection...");
         @SuppressWarnings("unchecked")
+        @NotNull
         Map<League, LeagueRanking> leagues = (Map<League, LeagueRanking>) chunkContext.getStepContext().getStepExecution().getJobExecution()
                 .getExecutionContext().get("leagues");
         List<MpgUser> usersTmp = new ArrayList<>();

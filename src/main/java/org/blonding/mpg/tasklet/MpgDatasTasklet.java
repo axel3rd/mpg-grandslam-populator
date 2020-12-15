@@ -43,7 +43,7 @@ public class MpgDatasTasklet implements Tasklet {
                 .body(Mono.just(new UserSignInRequest(mpgConfig.getEmail(), mpgConfig.getPassword())), UserSignInRequest.class).retrieve()
                 .bodyToMono(UserSignIn.class).block().getToken();
         Dashboard dasboard = client.get().uri("/user/dashboard").accept(MediaType.APPLICATION_JSON).header("client-version", MPG_CLIENT_VERSION)
-                .header("authorization", token).retrieve().toEntity(Dashboard.class).block().getBody();
+                .header("authorization", token).retrieve().toEntity(Dashboard.class).blockOptional().orElseThrow().getBody();
 
         Map<League, LeagueRanking> leagues = new HashMap<>();
         for (League league : dasboard.getLeagues()) {

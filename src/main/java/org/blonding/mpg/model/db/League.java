@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,7 +25,7 @@ public class League {
     private Long gamePlayed;
 
     @OneToMany
-    @JoinTable(name = "team")
+    @JoinColumn(name = "league_id")
     private List<Team> teams;
 
     public League() {
@@ -69,6 +69,10 @@ public class League {
 
     public Long getGamePlayed() {
         return gamePlayed;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
     }
 
     public void setName(String name) {

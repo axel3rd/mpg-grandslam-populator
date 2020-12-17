@@ -1,6 +1,7 @@
 package org.blonding.mpg;
 
 import org.blonding.mpg.tasklet.DataBaseUpdateLeaguesTasklet;
+import org.blonding.mpg.tasklet.DataBaseUpdateRankingTeamsTasklet;
 import org.blonding.mpg.tasklet.DataBaseUpdateUsersTasklet;
 import org.blonding.mpg.tasklet.MpgDatasTasklet;
 import org.blonding.mpg.tasklet.WhichUsersTasklet;
@@ -55,15 +56,22 @@ public class GrandslamPopulatorBatchApplication {
     }
 
     @Bean
+    public Step stepDataBaseUpdateRankingTeams(DataBaseUpdateRankingTeamsTasklet dataBaseUpdateRankingTeams) {
+        return steps.get("stepDataBaseUpdateRankingTeams").listener(promotionListener()).tasklet(dataBaseUpdateRankingTeams).build();
+    }
+
+    @Bean
     public Job jobGrandSlamPopulator(JobBuilderFactory jobBuilderFactory, MpgDatasTasklet mpgDatas, WhichUsersTasklet whichUsers,
-            DataBaseUpdateUsersTasklet dataBaseUpdateUsers, DataBaseUpdateLeaguesTasklet dataBaseUpdateLeagues) {
+            DataBaseUpdateUsersTasklet dataBaseUpdateUsers, DataBaseUpdateLeaguesTasklet dataBaseUpdateLeagues,
+            DataBaseUpdateRankingTeamsTasklet dataBaseUpdateRankingTeams) {
         JobBuilder jobBuilder = jobBuilderFactory.get("jobGrandSlamPopulator");
         Step stepMpgDatas = stepMpgDatas(mpgDatas);
         Step stepWhichUsers = stepWhichUsers(whichUsers);
         Step stepDataBaseUpdateUsers = stepDataBaseUpdateUsers(dataBaseUpdateUsers);
         Step stepDataBaseUpdateLeagues = stepDataBaseUpdateLeagues(dataBaseUpdateLeagues);
+        Step stepDataBaseUpdateRankingTeams = stepDataBaseUpdateRankingTeams(dataBaseUpdateRankingTeams);
         return jobBuilder.start(stepMpgDatas).next(stepWhichUsers).on(ExitStatus.STOPPED.getExitCode()).end().on(ExitStatus.COMPLETED.getExitCode())
-                .to(stepDataBaseUpdateUsers).next(stepDataBaseUpdateLeagues).end().build();
+                .to(stepDataBaseUpdateUsers).next(stepDataBaseUpdateLeagues).next(stepDataBaseUpdateRankingTeams).end().build();
     }
 
     @Bean

@@ -38,6 +38,10 @@ public class Player {
         this.name = name;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Long getMpgId() {
         return mpgId;
     }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.blonding.mpg.model.db.GrandSlam;
 import org.blonding.mpg.model.db.League;
+import org.blonding.mpg.model.db.Team;
 import org.blonding.mpg.repository.GrandSlamRepository;
 import org.blonding.mpg.repository.LeagueRepository;
 import org.blonding.mpg.repository.PlayerRepository;
@@ -51,6 +52,11 @@ class GrandslamPopulatorBatchApplicationManyExclusionTest extends AbstractTestMp
         GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
         List<League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
         assertEquals(2, leagues.size());
+        for (League league : leagues) {
+            for (Team team : league.getTeams()) {
+                assertEquals(league.getGamePlayed(), team.getVictory() + team.getDraw() + team.getDefeat());
+            }
+        }
     }
 
 }

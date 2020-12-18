@@ -15,6 +15,9 @@ public class Team implements Serializable {
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("abbr")
+    private String shortName;
+
     @JsonProperty("firstname")
     private String firstName;
 
@@ -27,6 +30,10 @@ public class Team implements Serializable {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getShortName() {
+        return shortName;
     }
 
     public String getFirstName() {

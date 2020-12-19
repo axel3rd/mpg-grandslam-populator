@@ -15,6 +15,16 @@ public class GrandSlam {
     private String year;
     private String status;
 
+    public GrandSlam() {
+        super();
+    }
+
+    public GrandSlam(String year, String status) {
+        super();
+        this.year = year;
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }

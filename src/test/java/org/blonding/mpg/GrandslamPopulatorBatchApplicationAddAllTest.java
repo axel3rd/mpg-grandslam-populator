@@ -21,9 +21,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.util.StringUtils;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.users.exclude=1570437,2237823" })
-@Sql({ "/schema-test.sql", "/datas-test.sql" })
-class GrandslamPopulatorBatchApplicationTest extends AbstractTestMpgData {
+@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM" })
+@Sql({ "/schema-test.sql" })
+class GrandslamPopulatorBatchApplicationAddAllTest extends AbstractTestMpgData {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -40,6 +40,8 @@ class GrandslamPopulatorBatchApplicationTest extends AbstractTestMpgData {
     @Test
     void defaults() throws Exception {
         mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+
+        grandSlamRepository.save(new GrandSlam("2042/1", "Running"));
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         for (StepExecution stepExecution : jobExecution.getStepExecutions()) {

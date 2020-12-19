@@ -27,6 +27,14 @@ public class Team {
         return id;
     }
 
+    public void setPlayerId(Long playerId) {
+        this.playerId = playerId;
+    }
+
+    public void setLeagueId(Long leagueId) {
+        this.leagueId = leagueId;
+    }
+
     public Long getPlayerId() {
         return playerId;
     }

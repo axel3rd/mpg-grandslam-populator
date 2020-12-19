@@ -59,7 +59,9 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             throw new UnsupportedOperationException("Object 'leaguesMpgOriginal' cannot be null here");
         }
 
-        Map<Long, Long> players2userMpgMap = playerRepository.findAll().stream().collect(Collectors.toMap(Player::getId, Player::getMpgId));
+        List<Player> players = playerRepository.findAll();
+        Map<Long, Long> players2usersMpgMap = players.stream().collect(Collectors.toMap(Player::getId, Player::getMpgId));
+        Map<Long, Long> usersMpg2PlayersMap = players.stream().collect(Collectors.toMap(Player::getMpgId, Player::getId));
 
         // Create a tuple of leagues/MpgUser to update
         Set<String> updatesTodo = new HashSet<>();
@@ -79,7 +81,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
         for (org.blonding.mpg.model.db.League league : leagues) {
             for (Team team : league.getTeams()) {
                 // No delete to manage here, players and leagues previous updates have done deletion (if any) by foreign key
-                MpgUser user = users.stream().filter(u -> u.getMpgId() == players2userMpgMap.get(team.getPlayerId())).findFirst().orElseThrow();
+                MpgUser user = users.stream().filter(u -> u.getMpgId() == players2usersMpgMap.get(team.getPlayerId())).findFirst().orElseThrow();
                 Rank rank = getRank(leaguesMpg, league.getMpgId(), user.getMpgId());
                 LOG.info("Ranking update for '{} / {}' with victory={} draw={} defeat={} diff={}", league.getMpgId(), user.getName(),
                         rank.getVictory(), rank.getDraw(), rank.getDefeat(), rank.getDifference());
@@ -99,19 +101,41 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             }
         }
         for (String id : updatesTodo) {
-            LOG.info("Ranking add for '{} / {}' with ...", id, "");
-            if (true) {
-                throw new UnsupportedOperationException("NYI");
-            }
+            String league = id.split("_")[0];
+            Long userUid = Long.valueOf(id.split("_")[1]);
+            MpgUser user = users.stream().filter(u -> u.getMpgId() == userUid).findFirst().orElseThrow();
+            Rank rank = getRank(leaguesMpg, league, userUid);
+            LOG.info("Ranking add for '{} / {}' with victory={} draw={} defeat={} diff={}", league, user.getName(), rank.getVictory(), rank.getDraw(),
+                    rank.getDefeat(), rank.getDifference());
+            Team team = new Team();
+            org.blonding.mpg.model.mpg.Team teamMpg = getTeam(leaguesMpg, league, user.getMpgId());
+            team.setPlayerId(usersMpg2PlayersMap.get(userUid));
+            team.setLeagueId(getLeagueDbId(leagues, league));
+            team.setName(teamMpg.getName());
+            team.setShortName(teamMpg.getShortName());
+            team.setVictory(rank.getVictory());
+            team.setDefeat(rank.getDefeat());
+            team.setDraw(rank.getDraw());
+            team.setDefeat(rank.getDefeat());
+            team.setGoalDiff(rank.getDifference());
+            teamRepository.save(team);
         }
         return RepeatStatus.FINISHED;
+    }
+
+    private static Long getLeagueDbId(List<org.blonding.mpg.model.db.League> leagues, String league) {
+        for (org.blonding.mpg.model.db.League l : leagues) {
+            if (league.equals(l.getMpgId())) {
+                return l.getId();
+            }
+        }
+        throw new UnsupportedOperationException(String.format("League id not found for league '%s'", league));
     }
 
     private static Rank getRank(Map<League, LeagueRanking> leaguesMpg, String league, Long user) {
         for (Entry<League, LeagueRanking> entry : leaguesMpg.entrySet()) {
             if (entry.getKey().getId().equals(league)) {
                 for (Rank rank : entry.getValue().getRanks()) {
-                    // mpg_team_MLMHBPCB$$mpg_user_955966
                     if (rank.getTeamId().equals(String.format("mpg_team_%s$$mpg_user_%s", league, user))) {
                         return rank;
                     }

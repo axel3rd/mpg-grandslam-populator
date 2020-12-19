@@ -3,10 +3,12 @@ package org.blonding.mpg.model.db;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -24,8 +26,8 @@ public class League {
     private Long grandSlamId;
     private Long gamePlayed;
 
-    @OneToMany
-    @JoinColumn(name = "league_id")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "team", joinColumns = { @JoinColumn(name = "league_id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
     private List<Team> teams;
 
     public League() {
@@ -41,6 +43,10 @@ public class League {
         this.status = status;
         this.grandSlamId = grandSlamId;
         this.gamePlayed = gamePlayed;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getMpgId() {

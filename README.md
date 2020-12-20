@@ -70,7 +70,7 @@ mvn package
 **Release**:
 
 ```
-git reset --hard origin/master 
+git reset --hard origin/main 
 git branch -m next-version 
 mvn -B clean release:clean release:prepare -Dusername=yourGitHubLogin -Dpassword=yourGitHubPasswordOrToken
 ```

@@ -33,6 +33,11 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
          run: mvn -B package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      -  name: Get package to release
+         id: package_build
+         run: |
+            PACKAGE=$(cd target && ls *.jar)
+            echo "::set-output name=package_name::${PACKAGE}"
       -  name: Create Release
          id: create_release
          uses: actions/create-release@v1
@@ -40,16 +45,16 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
             tag_name: ${{ github.ref }}
-            release_name: Release ${{ github.ref }}
+            release_name: ${{ steps.package_build.outputs.package_name }}
             draft: false
             prerelease: false
       -  name: Upload Release Asset
-         id: upload-release-asset
+         id: upload_release_asset
          uses: actions/upload-release-asset@v1
          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ./target/${{ github.ref }}.jar
-            asset_name: ${{ github.ref }}.jar
+            asset_path: ./target/${{ steps.package_build.outputs.package_name }}
+            asset_name: ${{ steps.package_build.outputs.package_name }}
             asset_content_type: application/jar

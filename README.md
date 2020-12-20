@@ -39,7 +39,15 @@ spring.datasource.password = bar
 
 # Include/exclude users (MPG id) ; by default users intersection of leagues is used
 #mpg.users.include = 955966
-#mpg.users.exclude=1570437,2237823
+#mpg.users.exclude = 1570437,2237823
+
+
+
+
+# Default logs
+#logging.level.root=WARN
+#logging.level.o.s.batch.core.job.SimpleStepHandler=INFO
+#logging.level.org.blonding.mpg=INFO
 
 # Temporary display all SQL queries
 #spring.jpa.properties.hibernate.format_sql = true
@@ -58,3 +66,13 @@ spring.datasource.password = bar
 ```
 mvn package
 ```
+
+**Release**:
+
+```
+git reset --hard origin/master 
+git branch -m next-version 
+mvn -B clean release:clean release:prepare -Dusername=yourGitHubLogin -Dpassword=yourGitHubPasswordOrToken
+```
+
+After that, you would have to create pull-request from 'next-version' branch and rebase it on master for next version development.

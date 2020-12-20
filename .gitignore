@@ -34,3 +34,5 @@ build/
 
 ### Others ###
 /bin/
+/pom.xml.releaseBackup
+/release.properties

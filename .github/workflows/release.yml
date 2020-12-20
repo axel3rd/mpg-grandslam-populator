@@ -2,7 +2,7 @@ name: Release (JAR Package)
 on:
    push:
       tags:
-      - v*
+      - grandslam-populator-batch-*
 jobs:
    build:
       runs-on: ubuntu-latest

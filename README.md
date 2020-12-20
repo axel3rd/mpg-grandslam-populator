@@ -75,4 +75,4 @@ git branch -m next-version
 mvn -B clean release:clean release:prepare -Dusername=yourGitHubLogin -Dpassword=yourGitHubPasswordOrToken
 ```
 
-After that, you would have to create pull-request from 'next-version' branch and rebase it on master for next version development.
+After that, you would have to create pull-request from `next-version` branch and rebase it on `main` for next version development.

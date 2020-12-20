@@ -60,7 +60,7 @@ public class MpgDatasTasklet implements Tasklet {
                 leagues.put(league,
                         client.get().uri("/league/" + league.getId() + "/ranking").accept(MediaType.APPLICATION_JSON)
                                 .header("client-version", MPG_CLIENT_VERSION).header("authorization", token).retrieve().toEntity(LeagueRanking.class)
-                                .block().getBody());
+                                .blockOptional().orElseThrow().getBody());
             }
         }
         if (leagues.size() < 2) {

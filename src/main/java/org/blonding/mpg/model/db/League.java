@@ -3,7 +3,6 @@ package org.blonding.mpg.model.db;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +25,7 @@ public class League {
     private Long grandSlamId;
     private Long gamePlayed;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     @JoinTable(name = "team", joinColumns = { @JoinColumn(name = "league_id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
     private List<Team> teams;
 

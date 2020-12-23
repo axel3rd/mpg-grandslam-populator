@@ -9,12 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 @Entity
 public class GrandSlam {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String year;
     private String status;
@@ -23,8 +26,23 @@ public class GrandSlam {
     @JoinColumn(name = "grandSlamId", updatable = false)
     private List<League> leagues;
 
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "grandSlamId", updatable = false)
+    private List<GrandSlamDay> grandSlamDays;
+
     public GrandSlam() {
         super();
+    }
+
+    /**
+     * Return a {@link GrandSlam} with "Running" status usage as {@link Example} in {@link JpaRepository#findOne(Example)}
+     * 
+     * @return Current {@link GrandSlam}
+     */
+    public static GrandSlam fromCurrentRunning() {
+        GrandSlam gs = new GrandSlam();
+        gs.status = "Running";
+        return gs;
     }
 
     public GrandSlam(String year, String status) {
@@ -33,7 +51,7 @@ public class GrandSlam {
         this.status = status;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -47,6 +65,10 @@ public class GrandSlam {
 
     public List<League> getLeagues() {
         return leagues;
+    }
+
+    public List<GrandSlamDay> getGrandSlamDays() {
+        return grandSlamDays;
     }
 
 }

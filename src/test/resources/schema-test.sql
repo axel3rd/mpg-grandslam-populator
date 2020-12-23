@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `grand_slam_day`;
 DROP TABLE IF EXISTS `team`;
 DROP TABLE IF EXISTS `league`;
 DROP TABLE IF EXISTS `grand_slam_bonus`;
@@ -62,3 +63,14 @@ CREATE TABLE IF NOT EXISTS `team` (
   CONSTRAINT `FK_C4E0A61F58AFC4DE` FOREIGN KEY (`league_id`) REFERENCES `league` (`id`),
   CONSTRAINT `FK_C4E0A61F99E6F5DF` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `grand_slam_day` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `grand_slam_id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `label` varchar(50) NOT NULL,
+  `players` json NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_63FD128231D0A180` (`grand_slam_id`),
+  CONSTRAINT `FK_63FD128231D0A180` FOREIGN KEY (`grand_slam_id`) REFERENCES `grand_slam` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4;

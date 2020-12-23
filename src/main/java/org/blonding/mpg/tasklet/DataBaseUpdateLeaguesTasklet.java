@@ -19,6 +19,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -35,11 +36,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Update leagues informations...");
-        List<GrandSlam> gsRunning = grandSlamRepository.findByStatus("Running");
-        if (gsRunning.size() > 1) {
-            throw new UnsupportedOperationException("Multiple GrandSlam are currently running, not supported");
-        }
-        GrandSlam gs = gsRunning.stream().findFirst().orElseThrow();
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
 
         @SuppressWarnings("unchecked")
         Map<League, LeagueRanking> leaguesMpgOriginal = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution()
@@ -60,17 +57,17 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
                 it.remove();
                 leagueRepository.delete(league);
             } else {
-                Long played = getLeagueGamePlayed(leagueMpgEntry.getValue().getRanks());
+                int played = getLeagueGamePlayed(leagueMpgEntry.getValue().getRanks());
                 LOG.info("League update with games played: {} ({}) -> {}", leagueMpgEntry.getKey().getId(), leagueMpgEntry.getKey().getName(),
                         played);
                 league.setName(leagueMpgEntry.getKey().getName());
-                league.setType(leagueMpgEntry.getKey().getChampionship().name());
+                league.setType(leagueMpgEntry.getKey().getChampionship().getName());
                 league.setGamePlayed(played);
                 leaguesMpg.remove(leagueMpgEntry.getKey());
             }
         }
         for (Entry<League, LeagueRanking> l : leaguesMpg.entrySet()) {
-            Long played = getLeagueGamePlayed(l.getValue().getRanks());
+            int played = getLeagueGamePlayed(l.getValue().getRanks());
             LOG.info("League add with games played: {} ({}) -> {}", l.getKey().getId(), l.getKey().getName(), played);
             leagues.add(new org.blonding.mpg.model.db.League(l.getKey().getId(), l.getKey().getChampionship().name(), l.getKey().getName(),
                     gs.getYear(), gs.getStatus(), gs.getId(), played));
@@ -79,11 +76,11 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
         return RepeatStatus.FINISHED;
     }
 
-    private static Long getLeagueGamePlayed(List<Rank> ranks) {
-        Long gamePlayed = Long.valueOf(-1);
+    private static int getLeagueGamePlayed(List<Rank> ranks) {
+        int gamePlayed = -1;
         for (Rank r : ranks) {
             if (r.getPlayed() > gamePlayed) {
-                gamePlayed = Long.valueOf(r.getPlayed());
+                gamePlayed = r.getPlayed();
             }
         }
         return gamePlayed;

@@ -14,15 +14,15 @@ public class League {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String mpgId;
     private String type;
     private String name;
     private String year;
     private String status;
-    private Long grandSlamId;
-    private Long gamePlayed;
+    private int grandSlamId;
+    private int gamePlayed;
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "leagueId", updatable = false)
@@ -32,7 +32,7 @@ public class League {
         super();
     }
 
-    public League(String mpgId, String type, String name, String year, String status, Long grandSlamId, Long gamePlayed) {
+    public League(String mpgId, String type, String name, String year, String status, int grandSlamId, int gamePlayed) {
         super();
         this.mpgId = mpgId;
         this.type = type;
@@ -43,7 +43,7 @@ public class League {
         this.gamePlayed = gamePlayed;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -67,11 +67,11 @@ public class League {
         return status;
     }
 
-    public Long getGrandSlamId() {
+    public int getGrandSlamId() {
         return grandSlamId;
     }
 
-    public Long getGamePlayed() {
+    public int getGamePlayed() {
         return gamePlayed;
     }
 
@@ -87,7 +87,7 @@ public class League {
         this.type = type;
     }
 
-    public void setGamePlayed(Long gamePlayed) {
+    public void setGamePlayed(int gamePlayed) {
         this.gamePlayed = gamePlayed;
     }
 }

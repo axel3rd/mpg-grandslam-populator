@@ -62,4 +62,10 @@ INSERT INTO `team` (`id`, `player_id`, `league_id`, `name`, `short_name`, `victo
     (242, 73, 36, 'Axel Football Club', 'AFC', 2, 3, 0, 2),
     (243, 75, 36, 'Breizh Skiphailh', 'BZH', 1, 2, 2, -1),
     (244, 74, 36, 'Origami FC', 'OFC', 2, 1, 2, -5),
-    (245, 78, 36, 'Bergerie FC', 'BFC', 3, 0, 2, 6);    
+    (245, 78, 36, 'Bergerie FC', 'BFC', 3, 0, 2, 6);
+    
+INSERT INTO `grand_slam_day` (`id`, `grand_slam_id`, `day`, `label`, `players`) VALUES
+    (77, 9, 1, 'J0 : L2j0 L1j0 PLj0', '[{"pos": 9, "pts": 0, "diff": 0, "player": 73}, {"pos": 9, "pts": 0, "diff": 0, "player": 74}, {"pos": 9, "pts": 0, "diff": 0, "player": 75}, {"pos": 9, "pts": 0, "diff": 0, "player": 76}, {"pos": 9, "pts": 0, "diff": 0, "player": 77}, {"pos": 9, "pts": 0, "diff": 0, "player": 78}, {"pos": 9, "pts": 0, "diff": 0, "player": 79}, {"pos": 9, "pts": 0, "diff": 0, "player": 80}]'),
+    (78, 9, 2, 'J1 : L2j3 L1j3 PLj1', '[{"pos": 1, "pts": 16, "diff": 8, "player": 80}, {"pos": 2, "pts": 15, "diff": 8, "player": 76}, {"pos": 3, "pts": 14, "diff": 4, "player": 73}, {"pos": 4, "pts": 12, "diff": 10, "player": 74}, {"pos": 5, "pts": 11, "diff": 2, "player": 77}, {"pos": 6, "pts": 10, "diff": -1, "player": 78}, {"pos": 7, "pts": 7, "diff": -10, "player": 75}, {"pos": 8, "pts": 6, "diff": -5, "player": 79}]'),
+    (79, 9, 3, 'J2 : L2j4 L1j4 PLj2 + corrections', '[{"pos": 1, "pts": 22, "diff": 16, "player": 74}, {"pos": 2, "pts": 21, "diff": 9, "player": 73}, {"pos": 3, "pts": 16, "diff": 3, "player": 80}, {"pos": 4, "pts": 15, "diff": 2, "player": 77}, {"pos": 5, "pts": 14, "diff": 0, "player": 78}, {"pos": 6, "pts": 13, "diff": 0, "player": 76}, {"pos": 7, "pts": 11, "diff": -2, "player": 79}, {"pos": 8, "pts": 6, "diff": -13, "player": 75}]'),
+    (80, 9, 4, 'J3 : L2j5 L1j5 PLj3', '[{"pos": 1, "pts": 25, "diff": 9, "player": 73}, {"pos": 2, "pts": 25, "diff": 8, "player": 74}, {"pos": 3, "pts": 23, "diff": 8, "player": 78}, {"pos": 4, "pts": 22, "diff": 9, "player": 76}, {"pos": 5, "pts": 22, "diff": 7, "player": 80}, {"pos": 6, "pts": 21, "diff": 8, "player": 77}, {"pos": 7, "pts": 14, "diff": 2, "player": 79}, {"pos": 8, "pts": 7, "diff": -18, "player": 75}]');    

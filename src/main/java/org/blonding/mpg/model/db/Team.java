@@ -10,9 +10,9 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long playerId;
-    private Long leagueId;
+    private Integer id;
+    private int playerId;
+    private int leagueId;
     private String name;
     private String shortName;
     private int victory;
@@ -20,15 +20,15 @@ public class Team {
     private int defeat;
     private int goalDiff;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public Long getPlayerId() {
+    public int getPlayerId() {
         return playerId;
     }
 
-    public Long getLeagueId() {
+    public int getLeagueId() {
         return leagueId;
     }
 
@@ -56,11 +56,11 @@ public class Team {
         return goalDiff;
     }
 
-    public void setPlayerId(Long playerId) {
+    public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
 
-    public void setLeagueId(Long leagueId) {
+    public void setLeagueId(int leagueId) {
         this.leagueId = leagueId;
     }
 

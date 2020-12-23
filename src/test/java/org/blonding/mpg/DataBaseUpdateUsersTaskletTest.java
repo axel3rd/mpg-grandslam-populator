@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.blonding.mpg.model.db.MpgUser;
+import org.blonding.mpg.model.bean.MpgUser;
 import org.blonding.mpg.model.db.Player;
 import org.blonding.mpg.repository.PlayerRepository;
 import org.junit.jupiter.api.Test;

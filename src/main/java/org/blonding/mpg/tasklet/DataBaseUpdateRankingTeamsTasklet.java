@@ -7,15 +7,14 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.blonding.mpg.model.bean.MpgUser;
 import org.blonding.mpg.model.db.GrandSlam;
-import org.blonding.mpg.model.db.MpgUser;
 import org.blonding.mpg.model.db.Player;
 import org.blonding.mpg.model.db.Team;
 import org.blonding.mpg.model.mpg.League;
 import org.blonding.mpg.model.mpg.LeagueRanking;
 import org.blonding.mpg.model.mpg.Rank;
 import org.blonding.mpg.repository.GrandSlamRepository;
-import org.blonding.mpg.repository.LeagueRepository;
 import org.blonding.mpg.repository.PlayerRepository;
 import org.blonding.mpg.repository.TeamRepository;
 import org.slf4j.Logger;
@@ -37,9 +36,6 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
 
     @Autowired
     private PlayerRepository playerRepository;
-
-    @Autowired
-    private LeagueRepository leagueRepository;
 
     @Autowired
     private TeamRepository teamRepository;
@@ -77,7 +73,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             throw new UnsupportedOperationException("Multiple GrandSlam are currently running, not supported");
         }
         GrandSlam gs = gsRunning.stream().findFirst().orElseThrow();
-        List<org.blonding.mpg.model.db.League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
+        List<org.blonding.mpg.model.db.League> leagues = gs.getLeagues();
         for (org.blonding.mpg.model.db.League league : leagues) {
             for (Team team : league.getTeams()) {
                 // No delete to manage here, players and leagues previous updates have done deletion (if any) by foreign key

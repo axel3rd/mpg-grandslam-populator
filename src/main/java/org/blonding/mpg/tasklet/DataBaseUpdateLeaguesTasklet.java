@@ -51,7 +51,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
         Map<League, LeagueRanking> leaguesMpg = leaguesMpgOriginal.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        List<org.blonding.mpg.model.db.League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
+        List<org.blonding.mpg.model.db.League> leagues = gs.getLeagues();
         for (Iterator<org.blonding.mpg.model.db.League> it = leagues.iterator(); it.hasNext();) {
             org.blonding.mpg.model.db.League league = it.next();
             Entry<League, LeagueRanking> leagueMpgEntry = getLeagueMpgById(leaguesMpg, league.getMpgId());

@@ -1,4 +1,4 @@
-package org.blonding.mpg.model.db;
+package org.blonding.mpg.model.bean;
 
 import java.io.Serializable;
 

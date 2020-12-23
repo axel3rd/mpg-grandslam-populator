@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.blonding.mpg.MpgConfig;
-import org.blonding.mpg.model.db.MpgUser;
+import org.blonding.mpg.model.bean.MpgUser;
 import org.blonding.mpg.model.mpg.League;
 import org.blonding.mpg.model.mpg.LeagueRanking;
 import org.slf4j.Logger;

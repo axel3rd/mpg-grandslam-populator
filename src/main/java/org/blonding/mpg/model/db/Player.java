@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,12 +20,12 @@ public class Player {
 
     private String name;
 
-    @OneToMany
-    @JoinTable(name = "team")
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "playerId", updatable = false)
     private List<Team> teams;
 
-    @OneToMany
-    @JoinTable(name = "grand_slam_bonus")
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "playerId", updatable = false)
     private List<GrandSlamBonus> grandSlamBonus;
 
     public Player() {

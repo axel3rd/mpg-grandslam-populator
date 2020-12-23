@@ -1,6 +1,5 @@
 package org.blonding.mpg.model.db;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +11,7 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "player_id")
     private Long playerId;
-    @Column(name = "league_id")
     private Long leagueId;
     private String name;
     private String shortName;
@@ -27,16 +24,12 @@ public class Team {
         return id;
     }
 
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
-    }
-
-    public void setLeagueId(Long leagueId) {
-        this.leagueId = leagueId;
-    }
-
     public Long getPlayerId() {
         return playerId;
+    }
+
+    public Long getLeagueId() {
+        return leagueId;
     }
 
     public String getName() {
@@ -61,6 +54,14 @@ public class Team {
 
     public int getGoalDiff() {
         return goalDiff;
+    }
+
+    public void setPlayerId(Long playerId) {
+        this.playerId = playerId;
+    }
+
+    public void setLeagueId(Long leagueId) {
+        this.leagueId = leagueId;
     }
 
     public void setName(String name) {

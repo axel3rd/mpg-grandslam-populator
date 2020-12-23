@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,8 +24,8 @@ public class League {
     private Long grandSlamId;
     private Long gamePlayed;
 
-    @OneToMany
-    @JoinTable(name = "team", joinColumns = { @JoinColumn(name = "league_id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "leagueId", updatable = false)
     private List<Team> teams;
 
     public League() {

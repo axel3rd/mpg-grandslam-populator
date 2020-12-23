@@ -2,8 +2,6 @@ package org.blonding.mpg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.blonding.mpg.model.db.GrandSlam;
 import org.blonding.mpg.model.db.League;
 import org.blonding.mpg.repository.GrandSlamRepository;
@@ -38,8 +36,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
         GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
-        List<League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
-        assertEquals(3, leagues.size());
+        assertEquals(3, gs.getLeagues().size());
     }
 
     @Test
@@ -55,8 +52,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
-        List<League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
-        assertEquals(3, leagues.size());
+        assertEquals(3, gs.getLeagues().size());
     }
 
     @Test
@@ -64,14 +60,13 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
         mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
 
         GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
-        leagueRepository.delete(leagueRepository.findByGrandSlamId(gs.getId()).get(0));
+        leagueRepository.delete(gs.getLeagues().get(0));
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
-        List<League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
-        assertEquals(3, leagues.size());
+        assertEquals(3, gs.getLeagues().size());
     }
 
 }

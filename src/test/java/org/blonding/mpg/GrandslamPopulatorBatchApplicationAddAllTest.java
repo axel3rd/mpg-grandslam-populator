@@ -9,7 +9,6 @@ import org.blonding.mpg.model.db.GrandSlam;
 import org.blonding.mpg.model.db.League;
 import org.blonding.mpg.model.db.Team;
 import org.blonding.mpg.repository.GrandSlamRepository;
-import org.blonding.mpg.repository.LeagueRepository;
 import org.blonding.mpg.repository.PlayerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
@@ -34,9 +33,6 @@ class GrandslamPopulatorBatchApplicationAddAllTest extends AbstractTestMpgData {
     @Autowired
     private GrandSlamRepository grandSlamRepository;
 
-    @Autowired
-    private LeagueRepository leagueRepository;
-
     @Test
     void defaults() throws Exception {
         mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
@@ -52,7 +48,7 @@ class GrandslamPopulatorBatchApplicationAddAllTest extends AbstractTestMpgData {
         assertEquals(8, playerRepository.findAll().size());
 
         GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
-        List<League> leagues = leagueRepository.findByGrandSlamId(gs.getId());
+        List<League> leagues = gs.getLeagues();
         assertEquals(3, leagues.size());
         for (League league : leagues) {
             for (Team team : league.getTeams()) {

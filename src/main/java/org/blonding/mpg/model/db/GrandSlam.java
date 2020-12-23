@@ -1,5 +1,6 @@
 package org.blonding.mpg.model.db;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -45,10 +46,11 @@ public class GrandSlam {
         return gs;
     }
 
-    public GrandSlam(String year, String status) {
+    public GrandSlam(String year) {
         super();
         this.year = year;
-        this.status = status;
+        this.status = GrandSlam.fromCurrentRunning().getStatus();
+        this.leagues = new ArrayList<>();
     }
 
     public Integer getId() {

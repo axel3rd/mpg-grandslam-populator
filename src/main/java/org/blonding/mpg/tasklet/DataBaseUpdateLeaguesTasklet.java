@@ -1,9 +1,14 @@
 package org.blonding.mpg.tasklet;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.blonding.mpg.model.db.GrandSlam;
@@ -36,7 +41,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Update leagues informations...");
-        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
+        GrandSlam gs = getOrCreateGrandSlam();
 
         @SuppressWarnings("unchecked")
         Map<League, LeagueRanking> leaguesMpgOriginal = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution()
@@ -74,6 +79,18 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
         }
         leagueRepository.saveAll(leagues);
         return RepeatStatus.FINISHED;
+    }
+
+    private GrandSlam getOrCreateGrandSlam() {
+        Optional<GrandSlam> gso = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning()));
+        if (gso.isPresent()) {
+            LOG.info("(Creating GrandSlam, none are in progress)");
+            return gso.orElseThrow();
+        }
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/1");
+        GrandSlam gs = new GrandSlam(dateFormat.format(date));
+        return grandSlamRepository.save(gs);
     }
 
     private static int getLeagueGamePlayed(List<Rank> ranks) {

@@ -38,8 +38,6 @@ class GrandslamPopulatorBatchApplicationAddAllTest extends AbstractTestMpgData {
     void defaults() throws Exception {
         mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
 
-        grandSlamRepository.save(new GrandSlam("2042/1", "Running"));
-
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         for (StepExecution stepExecution : jobExecution.getStepExecutions()) {
             assertFalse(stepExecution.getStepName() + "=" + stepExecution.getExitStatus().getExitDescription(),

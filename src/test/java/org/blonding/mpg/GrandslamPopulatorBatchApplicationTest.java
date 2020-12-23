@@ -17,6 +17,7 @@ import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.util.StringUtils;
 
@@ -45,7 +46,7 @@ class GrandslamPopulatorBatchApplicationTest extends AbstractTestMpgData {
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
         assertEquals(8, playerRepository.findAll().size());
 
-        GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         List<League> leagues = gs.getLeagues();
         assertEquals(3, leagues.size());
         for (League league : leagues) {

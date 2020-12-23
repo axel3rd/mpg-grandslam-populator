@@ -10,6 +10,6 @@ public class GrandSlamBonus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
 }

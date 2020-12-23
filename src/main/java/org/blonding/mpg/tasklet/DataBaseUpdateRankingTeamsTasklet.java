@@ -24,6 +24,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -56,8 +57,8 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
         }
 
         List<Player> players = playerRepository.findAll();
-        Map<Long, Long> players2usersMpgMap = players.stream().collect(Collectors.toMap(Player::getId, Player::getMpgId));
-        Map<Long, Long> usersMpg2PlayersMap = players.stream().collect(Collectors.toMap(Player::getMpgId, Player::getId));
+        Map<Integer, Long> players2usersMpgMap = players.stream().collect(Collectors.toMap(Player::getId, Player::getMpgId));
+        Map<Long, Integer> usersMpg2PlayersMap = players.stream().collect(Collectors.toMap(Player::getMpgId, Player::getId));
 
         // Create a tuple of leagues/MpgUser to update
         Set<String> updatesTodo = new HashSet<>();
@@ -68,11 +69,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             }
         }
 
-        List<GrandSlam> gsRunning = grandSlamRepository.findByStatus("Running");
-        if (gsRunning.size() > 1) {
-            throw new UnsupportedOperationException("Multiple GrandSlam are currently running, not supported");
-        }
-        GrandSlam gs = gsRunning.stream().findFirst().orElseThrow();
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         List<org.blonding.mpg.model.db.League> leagues = gs.getLeagues();
         for (org.blonding.mpg.model.db.League league : leagues) {
             for (Team team : league.getTeams()) {
@@ -119,7 +116,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
         return RepeatStatus.FINISHED;
     }
 
-    private static Long getLeagueDbId(List<org.blonding.mpg.model.db.League> leagues, String league) {
+    private static int getLeagueDbId(List<org.blonding.mpg.model.db.League> leagues, String league) {
         for (org.blonding.mpg.model.db.League l : leagues) {
             if (league.equals(l.getMpgId())) {
                 return l.getId();

@@ -1,5 +1,6 @@
 package org.blonding.mpg;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.blonding.mpg.model.db.GrandSlam;
@@ -10,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.jdbc.Sql;
@@ -30,19 +32,17 @@ class DataBaseUpdateMiscTest {
 
     @Test
     void deleteLeagues() throws Exception {
-        GrandSlam gs = grandSlamRepository.findByStatus("Running").stream().findFirst().orElseThrow();
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         leagueRepository.deleteAll(gs.getLeagues());
-        assertEquals(0, grandSlamRepository.findByStatus("Running").stream().findFirst().orElseThrow().getLeagues().size());
+        assertEquals(0, grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow().getLeagues().size());
     }
 
     @Test
     void deleteGrandSlam() throws Exception {
         // Simple test method to validate foreign key in database on the "master" item that the GrandSlam is
-        GrandSlam gs = grandSlamRepository.findByStatus("Running").stream().findFirst().orElseThrow();
-
-        // TODO Why FK exception on Team ?
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         grandSlamRepository.delete(gs);
-        assertEquals(0, grandSlamRepository.findByStatus("Running").size());
+        assertTrue(grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).isEmpty());
     }
 
 }

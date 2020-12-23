@@ -12,6 +12,7 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.users.exclude=1570437,2237823" })
@@ -35,7 +36,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
-        GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         assertEquals(3, gs.getLeagues().size());
     }
 
@@ -43,9 +44,9 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
     void delete() throws Exception {
         mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
 
-        GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
 
-        League l = new League("M0000000", "REMOVE", "To remove", gs.getYear(), gs.getStatus(), gs.getId(), Long.valueOf(0));
+        League l = new League("M0000000", "REMOVE", "To remove", gs.getYear(), gs.getStatus(), gs.getId(), 0);
         leagueRepository.save(l);
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
@@ -59,7 +60,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
     void add() throws Exception {
         mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
 
-        GrandSlam gs = grandSlamRepository.findByStatus("Running").get(0);
+        GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         leagueRepository.delete(gs.getLeagues().get(0));
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");

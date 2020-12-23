@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public enum Championship {
 
-    LIGUE_1(1, "L1"), PREMIER_LEAGUE(2, "PREMIER"), LIGA(3, "LIGA"), LIGUE_2(4, "L2"), SERIE_A(5, "SERIEA"), CHAMPIONS_LEAGUE(6, "C1");
+    LIGUE_1(1, "L1"), PREMIER_LEAGUE(2, "PL"), LIGA(3, "LIGA"), LIGUE_2(4, "L2"), SERIE_A(5, "SA"), CHAMPIONS_LEAGUE(6, "C1");
 
     private final int value;
     private final String name;
@@ -29,7 +29,7 @@ public enum Championship {
         return this.value;
     }
 
-    public String ame() {
+    public String getName() {
         return name;
     }
 }

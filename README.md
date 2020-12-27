@@ -8,7 +8,7 @@ Routines to populate [MPG GrandSlam](https://github.com/mansuydejean/mpggrandsla
 
 1. Prerequisite: [java](https://www.java.com/fr/download/) should be installed and on your PATH.
 1. Download package *grandslam-populator-batch-x.y.jar* (via **Releases** button on right of this page).
-1. Provide `application.properties` in same directory file (see below for details).
+1. Provide `application.properties` file in same directory (see below for details).
 1. Execute:
 
 ```

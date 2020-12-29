@@ -72,7 +72,7 @@ public class DataBaseUpdateGrandSlamDaysTasklet implements Tasklet {
             player.setPos(++pos);
         }
 
-        String label = String.join(" ", labels);
+        String label = "J" + day + " : " + String.join(" ", labels);
 
         GrandSlamDay gsd = grandSlamDayRepository.findOneByGrandSlamIdAndDay(gs.getId(), day);
         if (gsd == null) {

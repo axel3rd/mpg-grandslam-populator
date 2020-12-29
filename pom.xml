@@ -8,7 +8,7 @@
     </parent>
     <groupId>org.blonding.mpg</groupId>
     <artifactId>grandslam-populator-batch</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>MPG GrandSlam Populator</name>
     <description>MPG GrandSlam Populator Batch</description>
     <properties>
@@ -19,7 +19,7 @@
     </properties>
     <scm>
         <connection>scm:git:https://github.com/axel3rd/mpg-grandslam-populator</connection>
-        <tag>grandslam-populator-batch-0.1</tag>
+        <tag>grandslam-populator-batch-1.0</tag>
     </scm>
     <dependencies>
         <dependency>

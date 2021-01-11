@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.test.context.jdbc.Sql;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.users.exclude=1570437,2237823" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.leagues.include = MLAX7HMK,MLEFEX6G", "mpg.users.exclude=1570437,2237823" })
 @Sql({ "/schema-test.sql", "/datas-test.sql" })
 class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
 
@@ -30,19 +30,19 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
 
     @Test
     void update() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G");
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
-        assertEquals(3, gs.getLeagues().size());
+        assertEquals(2, gs.getLeagues().size());
     }
 
     @Test
     void delete() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G");
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
 
@@ -53,21 +53,22 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
-        assertEquals(3, gs.getLeagues().size());
+        assertEquals(2, grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow().getLeagues().size());
     }
 
     @Test
     void add() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G");
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
-        leagueRepository.delete(gs.getLeagues().get(0));
+        // PL retrieve in first, not included in configuration => 1
+        leagueRepository.delete(gs.getLeagues().get(1));
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
         assertEquals(ExitStatus.COMPLETED, jobExecutionWhichUser.getExitStatus());
 
-        assertEquals(3, gs.getLeagues().size());
+        assertEquals(2, grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow().getLeagues().size());
     }
 
 }

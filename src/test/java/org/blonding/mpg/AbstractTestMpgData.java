@@ -29,8 +29,8 @@ public class AbstractTestMpgData {
     protected void mockMpgBackend(String date, String... leagues) {
         stubFor(post("/user/signIn")
                 .willReturn(aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.user-signIn.fake.json")));
-        stubFor(get("/user/dashboard").willReturn(
-                aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.dashboard.MLAX7HMK-MLEFEX6G-MN7VSYBM-MLMHBPCB.json")));
+        stubFor(get("/user/dashboard").willReturn(aResponse().withHeader("Content-Type", "application/json")
+                .withBodyFile("mpg.dashboard.MLAX7HMK-MLEFEX6G-MN7VSYBM-MLMHBPCB." + date + ".json")));
         for (String league : leagues) {
             stubFor(get("/league/" + league + "/ranking").willReturn(
                     aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.ranking." + league + "." + date + ".json")));

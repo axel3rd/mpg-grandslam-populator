@@ -1,5 +1,6 @@
 package org.blonding.mpg.tasklet;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,8 +50,8 @@ public class MpgDatasTasklet implements Tasklet {
         }
         Map<League, LeagueRanking> leagues = new HashMap<>();
         for (League league : dasboard.getLeagues()) {
-            if (!LeagueStatus.GAMES.equals(league.getLeagueStatus())) {
-                LOG.info("League {} removed, not in game", league.getId());
+            if (!EnumSet.of(LeagueStatus.GAMES, LeagueStatus.TERMINATED, LeagueStatus.KEEP).contains(league.getLeagueStatus())) {
+                LOG.info("League {} removed, not in 'game' or 'terminated'", league.getId());
             } else if (mpgConfig.getLeaguesExclude().contains(league.getId())) {
                 LOG.info("League {} removed, excluded", league.getId());
             } else if (!mpgConfig.getLeaguesInclude().isEmpty() && !mpgConfig.getLeaguesInclude().contains(league.getId())) {

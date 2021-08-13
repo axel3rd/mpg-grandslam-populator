@@ -14,14 +14,21 @@ public class LeagueRanking implements Serializable {
 
     private Map<String, Team> teams;
 
-    @JsonProperty("ranking")
+    @JsonProperty("standings")
     private List<Rank> ranks;
 
+    private int statusCode;
+
+    @JsonProperty("teamsUsers")
     public Map<String, Team> getTeams() {
         return teams;
     }
 
     public List<Rank> getRanks() {
         return ranks;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
     }
 }

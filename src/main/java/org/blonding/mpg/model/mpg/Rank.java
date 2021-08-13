@@ -13,8 +13,11 @@ public class Rank implements Serializable {
     @JsonProperty("teamid")
     private String teamId;
     private int played;
+    @JsonProperty("won")
     private int victory;
+    @JsonProperty("dranw")
     private int draw;
+    @JsonProperty("lost")
     private int defeat;
     private int difference;
 

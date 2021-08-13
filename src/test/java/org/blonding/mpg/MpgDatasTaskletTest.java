@@ -17,7 +17,7 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MNNOTEXIST" })
 class MpgDatasTaskletTest extends AbstractTestMpgData {
 
     @Autowired
@@ -25,7 +25,7 @@ class MpgDatasTaskletTest extends AbstractTestMpgData {
 
     @Test
     void defaults() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20210813", "NKCDJTKS", "MLEFEX6G", "MLAX7HMK", "MLMHBPCB");
 
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("stepMpgDatas");
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
@@ -34,6 +34,9 @@ class MpgDatasTaskletTest extends AbstractTestMpgData {
         Map<League, LeagueRanking> leagues = (Map<League, LeagueRanking>) jobExecution.getStepExecutions().stream().findFirst().get()
                 .getExecutionContext().get("leagues");
         assertNotNull(leagues);
+
+        // TODO this UT should be the first successfull
+        // TODO should 2 leagues in game
         assertEquals(3, leagues.size());
         for (LeagueRanking ranking : leagues.values()) {
 

@@ -3,19 +3,28 @@ package org.blonding.mpg.model.mpg;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class League implements Serializable {
 
     private static final long serialVersionUID = 4749106603974234336L;
 
-    private String id;
+    @JsonProperty("leagueId")
+    private String leagueId;
+    private String divisionId;
     private String name;
-    private Championship championship;
-    private LeagueStatus leagueStatus;
+    @JsonProperty("championshipId")
+    private Championship championshipId;
+    @JsonProperty("status")
+    private LeagueStatus status;
 
     public String getId() {
-        return id;
+        return leagueId.substring("mpg_league_".length());
+    }
+
+    public String getDivisionId() {
+        return divisionId;
     }
 
     public String getName() {
@@ -23,11 +32,11 @@ public class League implements Serializable {
     }
 
     public LeagueStatus getLeagueStatus() {
-        return leagueStatus;
+        return status;
     }
 
     public Championship getChampionship() {
-        return championship;
+        return championshipId;
     }
 
 }

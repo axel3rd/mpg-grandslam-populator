@@ -27,13 +27,15 @@ public class AbstractTestMpgData {
     }
 
     protected void mockMpgBackend(String date, String... leagues) {
-        stubFor(post("/user/signIn")
+        stubFor(post("/user/sign-in")
                 .willReturn(aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.user-signIn.fake.json")));
-        stubFor(get("/user/dashboard").willReturn(aResponse().withHeader("Content-Type", "application/json")
-                .withBodyFile("mpg.dashboard.MLAX7HMK-MLEFEX6G-MN7VSYBM-MLMHBPCB." + date + ".json")));
+        stubFor(get("/dashboard/leagues").willReturn(aResponse().withHeader("Content-Type", "application/json")
+                .withBodyFile("mpg.dashboard." + String.join("-", leagues) + "." + date + ".json")));
         for (String league : leagues) {
-            stubFor(get("/league/" + league + "/ranking").willReturn(
+            stubFor(get("/division/mpg_division_" + league + "_3_1/ranking/standings").willReturn(
                     aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.ranking." + league + "." + date + ".json")));
+            stubFor(get("/division/mpg_division_" + league + "_3_1/teams").willReturn(
+                    aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.teams." + league + "." + date + ".json")));
         }
     }
 }

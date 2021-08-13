@@ -30,8 +30,6 @@ public class MpgDatasTasklet implements Tasklet {
 
     private static final Logger LOG = LoggerFactory.getLogger(MpgDatasTasklet.class);
 
-    private static final String MPG_CLIENT_VERSION = "6.9.0";
-
     @Autowired
     private MpgConfig mpgConfig;
 
@@ -40,11 +38,11 @@ public class MpgDatasTasklet implements Tasklet {
         LOG.info("--- Retrieve MPG Datas and Leagues to use...");
         WebClient client = WebClient.builder().defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).baseUrl(mpgConfig.getUrl())
                 .build();
-        String token = client.post().uri("/user/signIn").accept(MediaType.APPLICATION_JSON)
+        String token = client.post().uri("/user/sign-in").accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(new UserSignInRequest(mpgConfig.getEmail(), mpgConfig.getPassword())), UserSignInRequest.class).retrieve()
                 .bodyToMono(UserSignIn.class).blockOptional().orElseThrow().getToken();
-        Dashboard dasboard = client.get().uri("/user/dashboard").accept(MediaType.APPLICATION_JSON).header("client-version", MPG_CLIENT_VERSION)
-                .header("authorization", token).retrieve().toEntity(Dashboard.class).blockOptional().orElseThrow().getBody();
+        Dashboard dasboard = client.get().uri("/dashboard/leagues").accept(MediaType.APPLICATION_JSON).header("authorization", token).retrieve()
+                .toEntity(Dashboard.class).blockOptional().orElseThrow().getBody();
         if (dasboard == null) {
             throw new UnsupportedOperationException("The 'dasboard' cannot be null here");
         }
@@ -57,15 +55,19 @@ public class MpgDatasTasklet implements Tasklet {
             } else if (!mpgConfig.getLeaguesInclude().isEmpty() && !mpgConfig.getLeaguesInclude().contains(league.getId())) {
                 LOG.info("League {} removed, not in leagues included", league.getId());
             } else {
-                LOG.info("League {} taken into account", league.getId());
-                leagues.put(league,
-                        client.get().uri("/league/" + league.getId() + "/ranking").accept(MediaType.APPLICATION_JSON)
-                                .header("client-version", MPG_CLIENT_VERSION).header("authorization", token).retrieve().toEntity(LeagueRanking.class)
-                                .blockOptional().orElseThrow().getBody());
+                var leagueRanking = client.get().uri("/division/" + league.getDivisionId() + "/ranking/standings").accept(MediaType.APPLICATION_JSON)
+                        .header("authorization", token).retrieve().toEntity(LeagueRanking.class).blockOptional().orElseThrow().getBody();
+                if (leagueRanking != null && leagueRanking.getStatusCode() == 404) {
+                    LOG.info("League {} removed, not started", league.getId());
+                } else {
+                    LOG.info("League {} taken into account", league.getId());
+                    // TODO Teams (name, abbreviation) should be completed here with "/division/mpg_division_XXXXX_3_1/teams" URL
+                    leagues.put(league, leagueRanking);
+                }
             }
         }
         if (leagues.size() < 2) {
-            final String msg = "GrandSlam Cup requires two leagues minimum";
+            final var msg = "GrandSlam Cup requires two leagues minimum";
             LOG.error(msg);
             throw new UnsupportedOperationException(msg);
         }

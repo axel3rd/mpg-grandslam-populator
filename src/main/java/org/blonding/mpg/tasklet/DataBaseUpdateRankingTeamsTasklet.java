@@ -75,10 +75,10 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             for (Team team : league.getTeams()) {
                 // No delete to manage here, players and leagues previous updates have done deletion (if any) by foreign key
                 MpgUser user = users.stream().filter(u -> u.getMpgId() == players2usersMpgMap.get(team.getPlayerId())).findFirst().orElseThrow();
-                Rank rank = getRank(leaguesMpg, league.getMpgId(), user.getMpgId());
+                var rank = getRank(leaguesMpg, league.getMpgId(), user.getMpgId());
                 LOG.info("Ranking update for '{} / {}' with victory={} draw={} defeat={} diff={}", league.getMpgId(), user.getName(),
                         rank.getVictory(), rank.getDraw(), rank.getDefeat(), rank.getDifference());
-                org.blonding.mpg.model.mpg.Team teamMpg = getTeam(leaguesMpg, league.getMpgId(), user.getMpgId());
+                var teamMpg = getTeam(leaguesMpg, league.getMpgId(), user.getMpgId());
                 team.setName(teamMpg.getName());
                 team.setShortName(teamMpg.getShortName());
                 team.setVictory(rank.getVictory());
@@ -95,13 +95,13 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
         }
         for (String id : updatesTodo) {
             String league = id.split("_")[0];
-            Long userUid = Long.valueOf(id.split("_")[1]);
+            var userUid = Long.valueOf(id.split("_")[1]);
             MpgUser user = users.stream().filter(u -> u.getMpgId() == userUid).findFirst().orElseThrow();
-            Rank rank = getRank(leaguesMpg, league, userUid);
+            var rank = getRank(leaguesMpg, league, userUid);
             LOG.info("Ranking add for '{} / {}' with victory={} draw={} defeat={} diff={}", league, user.getName(), rank.getVictory(), rank.getDraw(),
                     rank.getDefeat(), rank.getDifference());
-            Team team = new Team();
-            org.blonding.mpg.model.mpg.Team teamMpg = getTeam(leaguesMpg, league, user.getMpgId());
+            var team = new Team();
+            var teamMpg = getTeam(leaguesMpg, league, user.getMpgId());
             team.setPlayerId(usersMpg2PlayersMap.get(userUid));
             team.setLeagueId(getLeagueDbId(leagues, league));
             team.setName(teamMpg.getName());

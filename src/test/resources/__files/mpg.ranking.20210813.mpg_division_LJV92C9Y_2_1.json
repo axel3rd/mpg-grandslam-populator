@@ -1,0 +1,306 @@
+{
+  "standings": [
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_0",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "wwldw",
+      "played": 8,
+      "won": 6,
+      "drawn": 1,
+      "lost": 1,
+      "goals": 25,
+      "goalsConceded": 11,
+      "difference": 14,
+      "points": 19,
+      "rank": 1,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_7",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "wwwwl",
+      "played": 8,
+      "won": 5,
+      "drawn": 2,
+      "lost": 1,
+      "goals": 23,
+      "goalsConceded": 13,
+      "difference": 10,
+      "points": 17,
+      "rank": 2,
+      "variation": -1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_5",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "wllww",
+      "played": 8,
+      "won": 5,
+      "drawn": 1,
+      "lost": 2,
+      "goals": 21,
+      "goalsConceded": 17,
+      "difference": 4,
+      "points": 16,
+      "rank": 3,
+      "variation": 0
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_1",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "llwwl",
+      "played": 8,
+      "won": 4,
+      "drawn": 0,
+      "lost": 4,
+      "goals": 22,
+      "goalsConceded": 18,
+      "difference": 4,
+      "points": 12,
+      "rank": 4,
+      "variation": 0
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_2",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "lwwlw",
+      "played": 8,
+      "won": 4,
+      "drawn": 0,
+      "lost": 4,
+      "goals": 15,
+      "goalsConceded": 13,
+      "difference": 2,
+      "points": 12,
+      "rank": 5,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_8",
+      "rotaldo": false,
+      "bonusUsed": false,
+      "series": "dlwlw",
+      "played": 8,
+      "won": 3,
+      "drawn": 1,
+      "lost": 4,
+      "goals": 14,
+      "goalsConceded": 16,
+      "difference": -2,
+      "points": 10,
+      "rank": 6,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_3",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "dlwlw",
+      "played": 8,
+      "won": 3,
+      "drawn": 1,
+      "lost": 4,
+      "goals": 17,
+      "goalsConceded": 22,
+      "difference": -5,
+      "points": 10,
+      "rank": 7,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_4",
+      "rotaldo": false,
+      "bonusUsed": false,
+      "series": "wwlwl",
+      "played": 8,
+      "won": 3,
+      "drawn": 1,
+      "lost": 4,
+      "goals": 14,
+      "goalsConceded": 20,
+      "difference": -6,
+      "points": 10,
+      "rank": 8,
+      "variation": -1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_6",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "lwldl",
+      "played": 8,
+      "won": 2,
+      "drawn": 2,
+      "lost": 4,
+      "goals": 20,
+      "goalsConceded": 22,
+      "difference": -2,
+      "points": 8,
+      "rank": 9,
+      "variation": -1
+    },
+    {
+      "teamId": "mpg_team_LJV92C9Y_2_1_9",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "lllll",
+      "played": 8,
+      "won": 0,
+      "drawn": 1,
+      "lost": 7,
+      "goals": 7,
+      "goalsConceded": 26,
+      "difference": -19,
+      "points": 1,
+      "rank": 10,
+      "variation": 0
+    }
+  ],
+  "teamsUsers": {
+    "mpg_team_LJV92C9Y_2_1_6": {
+      "id": "user_1520001",
+      "firstName": "Typhaine",
+      "username": "Licornasse",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/73f9185d-11f7-4c4c-a7bc-52d4608d704f.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_144"
+        }
+      },
+      "createdAt": "2018-08-26T12:17:17Z",
+      "lastLogin": "2021-08-13T10:16:33Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_9": {
+      "id": "user_1570437",
+      "firstName": "Tony",
+      "username": "Gwada971",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/56b2b4d5-8f83-40a6-8147-c190ae5da861.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_149"
+        }
+      },
+      "createdAt": "2018-09-18T08:41:04Z",
+      "lastLogin": "2021-08-12T17:27:56Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_1": {
+      "id": "user_963519",
+      "firstName": "David",
+      "username": "David#XDXZ",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/aa45fef9-b430-4816-9080-cc865eda73cb.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_152"
+        }
+      },
+      "createdAt": "2018-06-08T09:29:35Z",
+      "lastLogin": "2021-08-13T16:00:10Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_2": {
+      "id": "user_1298752",
+      "firstName": "Mo",
+      "username": "Mo#28MB1",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/56b2b4d5-8f83-40a6-8147-c190ae5da861.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_149"
+        }
+      },
+      "createdAt": "2018-06-16T22:03:58Z",
+      "lastLogin": "2021-05-19T09:47:17Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_4": {
+      "id": "user_955966",
+      "firstName": "Alix",
+      "username": "axel3rd",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/8a2f0ce7-1b99-43ec-bbde-e64261b65ae4.png",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_149"
+        }
+      },
+      "createdAt": "2018-06-07T17:51:58Z",
+      "lastLogin": "2021-08-13T16:07:37Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_0": {
+      "id": "user_953561",
+      "firstName": "Mansuy",
+      "username": "Mansuy",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/874b44b5-2e4a-483a-a196-786131521570.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_148"
+        }
+      },
+      "createdAt": "2018-06-07T15:13:34Z",
+      "lastLogin": "2021-08-13T08:51:05Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_8": {
+      "id": "user_600737",
+      "firstName": "Celine",
+      "username": "Celbzh",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/0dbb71f0-ebb3-4b5a-a7e5-cecd5eb33e5f.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_150"
+        }
+      },
+      "createdAt": "2017-10-18T20:57:38Z",
+      "lastLogin": "2021-08-12T22:41:49Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_3": {
+      "id": "user_35635",
+      "firstName": "Bertrand",
+      "username": "Bimou",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/2dd3cf73-8ee9-4103-b9eb-0bff89d6afa6.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_3"
+        }
+      },
+      "createdAt": "2013-02-18T10:26:41.000Z",
+      "lastLogin": "2021-08-13T13:58:17Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_5": {
+      "id": "user_1567579",
+      "firstName": "Mat",
+      "username": "Master",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/56b2b4d5-8f83-40a6-8147-c190ae5da861.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_144"
+        }
+      },
+      "createdAt": "2018-09-17T08:12:12Z",
+      "lastLogin": "2021-08-13T12:38:20Z"
+    },
+    "mpg_team_LJV92C9Y_2_1_7": {
+      "id": "user_1662232",
+      "firstName": "Youenn",
+      "username": "Youennn",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/1a74d8bc-c9c7-4c3f-a18e-e430c12839ab.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_150"
+        }
+      },
+      "createdAt": "2018-12-20T07:27:03Z",
+      "lastLogin": "2021-08-12T13:07:45Z"
+    }
+  }
+}

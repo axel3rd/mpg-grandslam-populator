@@ -5,6 +5,12 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+
+import org.blonding.mpg.model.mpg.Dashboard;
+import org.blonding.mpg.model.mpg.League;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.springframework.batch.test.context.SpringBatchTest;
@@ -12,6 +18,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thomaskasene.wiremock.junit.WireMockStubs;
 
 @RunWith(SpringRunner.class)
@@ -27,15 +34,33 @@ public class AbstractTestMpgData {
     }
 
     protected void mockMpgBackend(String date, String... leagues) {
-        stubFor(post("/user/sign-in")
-                .willReturn(aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.user-signIn.fake.json")));
-        stubFor(get("/dashboard/leagues").willReturn(aResponse().withHeader("Content-Type", "application/json")
-                .withBodyFile("mpg.dashboard." + String.join("-", leagues) + "." + date + ".json")));
-        for (String league : leagues) {
-            stubFor(get("/division/mpg_division_" + league + "_3_1/ranking/standings").willReturn(
-                    aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.ranking." + league + "." + date + ".json")));
-            stubFor(get("/division/mpg_division_" + league + "_3_1/teams").willReturn(
-                    aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.teams." + league + "." + date + ".json")));
+        try {
+            stubFor(post("/user/sign-in")
+                    .willReturn(aResponse().withHeader("Content-Type", "application/json").withBodyFile("mpg.user-signIn.fake.json")));
+            String leagueFile = "mpg.dashboard." + date + "." + String.join("-", leagues) + ".json";
+            createGetJsonStub("/dashboard/leagues", leagueFile);
+
+            Dashboard dashboard = new ObjectMapper().readValue(new File("src/test/resources/__files", leagueFile), Dashboard.class);
+
+            for (League league : dashboard.getLeagues()) {
+                if (!Arrays.stream(leagues).anyMatch(league.getId()::equals)) {
+                    continue;
+                }
+                createGetJsonStub("/division/" + league.getDivisionId() + "/ranking/standings",
+                        "mpg.ranking." + date + "." + league.getDivisionId() + ".json");
+                createGetJsonStub("/division/" + league.getDivisionId() + "/teams", "mpg.teams." + date + "." + league.getDivisionId() + ".json");
+            }
+        } catch (IOException e) {
+            throw new UnsupportedOperationException("Problem in Dashboard file", e);
         }
     }
+
+    private void createGetJsonStub(String url, String file) {
+        File f = new File("src/test/resources/__files", file);
+        if (!f.exists()) {
+            throw new UnsupportedOperationException(String.format("Test file '%s' doesn't exist for url '%s', it cannot work properly", file, url));
+        }
+        stubFor(get(url).willReturn(aResponse().withHeader("Content-Type", "application/json").withBodyFile(file)));
+    }
+
 }

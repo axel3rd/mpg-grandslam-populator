@@ -128,11 +128,10 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
     private static Rank getRank(Map<League, LeagueRanking> leaguesMpg, String league, Long user) {
         for (Entry<League, LeagueRanking> entry : leaguesMpg.entrySet()) {
             if (entry.getKey().getId().equals(league)) {
-                for (Rank rank : entry.getValue().getRanks()) {
-                    if (rank.getTeamId().equals(String.format("mpg_team_%s$$mpg_user_%s", league, user))) {
-                        return rank;
-                    }
-                }
+                LeagueRanking lr = entry.getValue();
+                String teamUserId = lr.getTeams().values().stream().filter(p -> p.getUserId().equals("user_" + user)).findFirst().orElseThrow()
+                        .getId();
+                return lr.getRanks().stream().filter(p -> p.getTeamId().equals(teamUserId)).findFirst().orElseThrow();
             }
         }
         throw new UnsupportedOperationException(String.format("Rank not found for league '%s' and user '%s'", league, user));
@@ -141,10 +140,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
     private static org.blonding.mpg.model.mpg.Team getTeam(Map<League, LeagueRanking> leaguesMpg, String league, Long user) {
         for (Entry<League, LeagueRanking> entry : leaguesMpg.entrySet()) {
             if (entry.getKey().getId().equals(league)) {
-                org.blonding.mpg.model.mpg.Team t = entry.getValue().getTeams().get(String.format("mpg_team_%s$$mpg_user_%s", league, user));
-                if (t != null) {
-                    return t;
-                }
+                return entry.getValue().getTeams().values().stream().filter(p -> p.getUserId().equals("user_" + user)).findFirst().orElseThrow();
             }
         }
         throw new UnsupportedOperationException(String.format("Rank not found for league '%s' and user '%s'", league, user));

@@ -162,34 +162,6 @@
     }
   ],
   "teamsUsers": {
-    "mpg_team_MLEFEX6G_3_1_6": {
-      "id": "user_963519",
-      "firstName": "David",
-      "username": "David#XDXZ",
-      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/aa45fef9-b430-4816-9080-cc865eda73cb.jpg",
-      "applicationsData": {
-        "mpg": {
-          "level": 2,
-          "mainFavoriteClubId": "mpg_championship_club_152"
-        }
-      },
-      "createdAt": "2018-06-08T09:29:35Z",
-      "lastLogin": "2021-08-13T11:14:14Z"
-    },
-    "mpg_team_MLEFEX6G_3_1_2": {
-      "id": "user_955966",
-      "firstName": "Alix",
-      "username": "axel3rd",
-      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/8a2f0ce7-1b99-43ec-bbde-e64261b65ae4.png",
-      "applicationsData": {
-        "mpg": {
-          "level": 2,
-          "mainFavoriteClubId": "mpg_championship_club_149"
-        }
-      },
-      "createdAt": "2018-06-07T17:51:58Z",
-      "lastLogin": "2021-08-13T12:43:07Z"
-    },
     "mpg_team_MLEFEX6G_3_1_7": {
       "id": "user_1781770",
       "firstName": "Nicolas",
@@ -203,6 +175,34 @@
       },
       "createdAt": "2019-07-18T06:52:47Z",
       "lastLogin": "2021-08-11T19:33:08Z"
+    },
+    "mpg_team_MLEFEX6G_3_1_6": {
+      "id": "user_963519",
+      "firstName": "David",
+      "username": "David#XDXZ",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/aa45fef9-b430-4816-9080-cc865eda73cb.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_152"
+        }
+      },
+      "createdAt": "2018-06-08T09:29:35Z",
+      "lastLogin": "2021-08-13T16:00:10Z"
+    },
+    "mpg_team_MLEFEX6G_3_1_2": {
+      "id": "user_955966",
+      "firstName": "Alix",
+      "username": "axel3rd",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/8a2f0ce7-1b99-43ec-bbde-e64261b65ae4.png",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_149"
+        }
+      },
+      "createdAt": "2018-06-07T17:51:58Z",
+      "lastLogin": "2021-08-13T16:07:37Z"
     },
     "mpg_team_MLEFEX6G_3_1_8": {
       "id": "user_1567579",
@@ -260,20 +260,6 @@
       "createdAt": "2017-10-18T20:57:38Z",
       "lastLogin": "2021-08-12T22:41:49Z"
     },
-    "mpg_team_MLEFEX6G_3_1_1": {
-      "id": "user_1520001",
-      "firstName": "Typhaine",
-      "username": "Licornasse",
-      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/73f9185d-11f7-4c4c-a7bc-52d4608d704f.jpg",
-      "applicationsData": {
-        "mpg": {
-          "level": 1,
-          "mainFavoriteClubId": "mpg_championship_club_144"
-        }
-      },
-      "createdAt": "2018-08-26T12:17:17Z",
-      "lastLogin": "2021-08-13T10:16:33Z"
-    },
     "mpg_team_MLEFEX6G_3_1_9": {
       "id": "user_1781796",
       "firstName": "Jeremy",
@@ -300,7 +286,21 @@
         }
       },
       "createdAt": "2013-02-18T10:26:41.000Z",
-      "lastLogin": "2021-08-12T21:57:41Z"
+      "lastLogin": "2021-08-13T13:58:17Z"
+    },
+    "mpg_team_MLEFEX6G_3_1_1": {
+      "id": "user_1520001",
+      "firstName": "Typhaine",
+      "username": "Licornasse",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/73f9185d-11f7-4c4c-a7bc-52d4608d704f.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_144"
+        }
+      },
+      "createdAt": "2018-08-26T12:17:17Z",
+      "lastLogin": "2021-08-13T10:16:33Z"
     }
   }
 }

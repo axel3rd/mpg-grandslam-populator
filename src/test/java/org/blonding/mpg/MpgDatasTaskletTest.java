@@ -25,7 +25,8 @@ class MpgDatasTaskletTest extends AbstractTestMpgData {
 
     @Test
     void defaults() throws Exception {
-        mockMpgBackend("20210813", "NKCDJTKS", "MLEFEX6G", "MLAX7HMK", "MLMHBPCB");
+        // The first 'MLAX7HMK' is not started
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("stepMpgDatas");
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
@@ -35,9 +36,7 @@ class MpgDatasTaskletTest extends AbstractTestMpgData {
                 .getExecutionContext().get("leagues");
         assertNotNull(leagues);
 
-        // TODO this UT should be the first successfull
-        // TODO should 2 leagues in game
-        assertEquals(3, leagues.size());
+        assertEquals(4, leagues.size());
         for (LeagueRanking ranking : leagues.values()) {
 
             assertNotNull(ranking.getTeams());

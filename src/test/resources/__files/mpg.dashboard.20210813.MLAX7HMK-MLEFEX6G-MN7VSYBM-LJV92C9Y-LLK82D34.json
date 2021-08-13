@@ -177,12 +177,181 @@
       "totalUsers": 10,
       "totalMissedPosts": 0,
       "mercatoStartDate": "2021-08-18T12:00:00Z",
-      "mercatoStartIn": 427822,
+      "mercatoStartIn": 418701,
       "divisionNumber": 1,
       "divisionStatus": 3,
       "divisionId": "mpg_division_MLMHBPCB_3_1",
       "divisionTotalUsers": 10,
       "currentTeamStatus": 0
+    },
+    {
+      "leagueId": "mpg_league_LJT3FXDF",
+      "name": "/about blank",
+      "adminId": "user_35635",
+      "status": 3,
+      "season": 3,
+      "mode": 1,
+      "createdAt": "2019-08-04T19:51:57Z",
+      "mercatoState": {
+        "teamsStatuses": {
+          "mpg_team_LJT3FXDF_3_1_0": 1,
+          "mpg_team_LJT3FXDF_3_1_1": 1,
+          "mpg_team_LJT3FXDF_3_1_2": 1,
+          "mpg_team_LJT3FXDF_3_1_3": 1,
+          "mpg_team_LJT3FXDF_3_1_4": 1,
+          "mpg_team_LJT3FXDF_3_1_5": 1,
+          "mpg_team_LJT3FXDF_3_1_6": 1,
+          "mpg_team_LJT3FXDF_3_1_7": 1,
+          "mpg_team_LJT3FXDF_3_1_8": 2,
+          "mpg_team_LJT3FXDF_3_1_9": 2
+        },
+        "turn": 1
+      },
+      "championshipId": 2,
+      "rating": "mpg",
+      "imageUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/23856f3c-1355-4bfd-a958-0f08b8a1f061.jpg",
+      "totalDivisions": 1,
+      "totalUsers": 10,
+      "totalMissedPosts": 0,
+      "mercatoStartDate": "2020-08-26T08:20:58Z",
+      "mercatoStartIn": -30439241,
+      "divisionNumber": 1,
+      "divisionStatus": 3,
+      "divisionId": "mpg_division_LJT3FXDF_3_1",
+      "divisionTotalUsers": 10,
+      "currentTeamStatus": 1
+    },
+    {
+      "leagueId": "mpg_league_MN7VSYBM",
+      "name": "Giro Far Breton",
+      "adminId": "user_600737",
+      "status": 5,
+      "season": 2,
+      "mode": 2,
+      "createdAt": "2020-09-14T11:12:30Z",
+      "mercatoState": {
+        "divisionsLeft": 0,
+        "usersLeft": 0
+      },
+      "championshipId": 5,
+      "rating": "mpg",
+      "imageUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/bb817a04-6bca-403d-86f8-87077cb95112.jpg",
+      "totalDivisions": 1,
+      "totalUsers": 10,
+      "totalMissedPosts": 0,
+      "finishedState": {
+        "seasonEndDate": "2021-07-19T06:24:57Z",
+        "winner": {
+          "firstName": "Celine",
+          "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/prod/jersey_0_1598369796008.png",
+          "team": {
+            "abbreviation": "FZA",
+            "gear": {
+              "home": {
+                "jerseyId": "mpg_jersey_0_1598369796008"
+              }
+            },
+            "id": "mpg_team_MN7VSYBM_2_1_0",
+            "name": "Forza"
+          },
+          "userId": "user_600737",
+          "username": "Celine#KBN2"
+        }
+      },
+      "divisionNumber": 1,
+      "currentTeamRanking": 6,
+      "currentTeamVariation": -1,
+      "divisionStatus": 5,
+      "divisionId": "mpg_division_MN7VSYBM_2_1",
+      "divisionTotalUsers": 10
+    },
+    {
+      "leagueId": "mpg_league_LJV92C9Y",
+      "name": "Chèvres Show",
+      "adminId": "user_953561",
+      "status": 5,
+      "season": 2,
+      "mode": 2,
+      "createdAt": "2019-08-05T15:39:23Z",
+      "mercatoState": {
+        "divisionsLeft": 0,
+        "usersLeft": 0
+      },
+      "championshipId": 1,
+      "rating": "mpg",
+      "imageUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/906387dc-2dbe-464d-a21e-a16f0cff5001.jpg",
+      "totalDivisions": 1,
+      "totalUsers": 10,
+      "totalMissedPosts": 0,
+      "finishedState": {
+        "seasonEndDate": "2021-07-19T06:22:49Z",
+        "winner": {
+          "firstName": "Mansuy",
+          "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/prod/jersey_0_1585225296849.png",
+          "team": {
+            "abbreviation": "CAT",
+            "gear": {
+              "home": {
+                "jerseyId": "mpg_jersey_0_1585225296849"
+              }
+            },
+            "id": "mpg_team_LJV92C9Y_2_1_0",
+            "name": "Chasse Au Titre"
+          },
+          "userId": "user_953561",
+          "username": "Mansuy#X47T"
+        }
+      },
+      "divisionNumber": 1,
+      "currentTeamRanking": 8,
+      "currentTeamVariation": -1,
+      "divisionStatus": 5,
+      "divisionId": "mpg_division_LJV92C9Y_2_1",
+      "divisionTotalUsers": 10
+    },
+    {
+      "leagueId": "mpg_league_LLK82D34",
+      "name": "Paella Liga 🥘 ",
+      "adminId": "user_35635",
+      "status": 5,
+      "season": 1,
+      "mode": 1,
+      "createdAt": "2019-08-26T11:59:40Z",
+      "mercatoState": {
+        "divisionsLeft": 0,
+        "usersLeft": 0
+      },
+      "championshipId": 3,
+      "rating": "mpg",
+      "imageUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/bf171101-4669-43fa-a906-a2be4e90ce09.jpg",
+      "totalDivisions": 1,
+      "totalUsers": 8,
+      "totalMissedPosts": 0,
+      "finishedState": {
+        "seasonEndDate": "2021-07-19T06:23:05Z",
+        "winner": {
+          "firstName": "David",
+          "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/prod/jersey_0_1561646533972.png",
+          "team": {
+            "abbreviation": "PCF",
+            "gear": {
+              "home": {
+                "jerseyId": "mpg_jersey_0_1561646533972"
+              }
+            },
+            "id": "mpg_team_LLK82D34_1_1_1",
+            "name": "Plato Combinado FC"
+          },
+          "userId": "user_963519",
+          "username": "David#XDXZ"
+        }
+      },
+      "divisionNumber": 1,
+      "currentTeamRanking": 7,
+      "currentTeamVariation": 0,
+      "divisionStatus": 5,
+      "divisionId": "mpg_division_LLK82D34_1_1",
+      "divisionTotalUsers": 8
     }
   ],
   "defaultOrder": false

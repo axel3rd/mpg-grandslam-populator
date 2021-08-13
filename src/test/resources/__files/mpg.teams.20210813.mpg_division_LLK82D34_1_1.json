@@ -1,0 +1,814 @@
+[
+  {
+    "id": "mpg_team_LLK82D34_1_1_2",
+    "name": "Tortilla O Chorizo",
+    "abbreviation": "TOC",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/back/jersey_0_1561646082093_temp.png",
+    "status": 3,
+    "budget": 96,
+    "squad": {
+      "mpg_championship_player_90394": {
+        "id": "mpg_championship_player_90394",
+        "price": 19,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_88477": {
+        "id": "mpg_championship_player_88477",
+        "price": 19,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_80795": {
+        "id": "mpg_championship_player_80795",
+        "price": 19,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_58876": {
+        "id": "mpg_championship_player_58876",
+        "price": 22,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_51792": {
+        "id": "mpg_championship_player_51792",
+        "price": 12,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_48772": {
+        "id": "mpg_championship_player_48772",
+        "price": 31,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_42670": {
+        "id": "mpg_championship_player_42670",
+        "price": 31,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_246162": {
+        "id": "mpg_championship_player_246162",
+        "price": 22,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_230598": {
+        "id": "mpg_championship_player_230598",
+        "price": 19,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_18498": {
+        "id": "mpg_championship_player_18498",
+        "price": 21,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_167449": {
+        "id": "mpg_championship_player_167449",
+        "price": 32,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_165659": {
+        "id": "mpg_championship_player_165659",
+        "price": 22,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_163784": {
+        "id": "mpg_championship_player_163784",
+        "price": 21,
+        "bidDate": "2019-08-26T17:39:20Z",
+        "status": 1
+      },
+      "mpg_championship_player_54104": {
+        "id": "mpg_championship_player_54104",
+        "price": 57,
+        "bidDate": "2019-08-26T18:56:12Z",
+        "status": 1
+      },
+      "mpg_championship_player_61597": {
+        "id": "mpg_championship_player_61597",
+        "price": 13,
+        "bidDate": "2019-08-27T04:08:09Z",
+        "status": 1
+      },
+      "mpg_championship_player_215206": {
+        "id": "mpg_championship_player_215206",
+        "price": 49,
+        "bidDate": "2019-08-27T04:08:09Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_3",
+    "name": "Manitas de la Bitas",
+    "abbreviation": "LCD",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/back/jersey_0_1575301650294_temp.png",
+    "status": 3,
+    "budget": 84,
+    "squad": {
+      "mpg_championship_player_93721": {
+        "id": "mpg_championship_player_93721",
+        "price": 36,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_89850": {
+        "id": "mpg_championship_player_89850",
+        "price": 26,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_87499": {
+        "id": "mpg_championship_player_87499",
+        "price": 25,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_86173": {
+        "id": "mpg_championship_player_86173",
+        "price": 17,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_84086": {
+        "id": "mpg_championship_player_84086",
+        "price": 17,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_72162": {
+        "id": "mpg_championship_player_72162",
+        "price": 31,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_55268": {
+        "id": "mpg_championship_player_55268",
+        "price": 33,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_443967": {
+        "id": "mpg_championship_player_443967",
+        "price": 25,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_432751": {
+        "id": "mpg_championship_player_432751",
+        "price": 27,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_218328": {
+        "id": "mpg_championship_player_218328",
+        "price": 22,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_213431": {
+        "id": "mpg_championship_player_213431",
+        "price": 26,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_205992": {
+        "id": "mpg_championship_player_205992",
+        "price": 31,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_195364": {
+        "id": "mpg_championship_player_195364",
+        "price": 22,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_179268": {
+        "id": "mpg_championship_player_179268",
+        "price": 20,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_116732": {
+        "id": "mpg_championship_player_116732",
+        "price": 6,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_109243": {
+        "id": "mpg_championship_player_109243",
+        "price": 26,
+        "bidDate": "2019-08-26T17:49:18Z",
+        "status": 1
+      },
+      "mpg_championship_player_53041": {
+        "id": "mpg_championship_player_53041",
+        "price": 15,
+        "bidDate": "2019-08-26T19:33:08Z",
+        "status": 1
+      },
+      "mpg_championship_player_102578": {
+        "id": "mpg_championship_player_102578",
+        "price": 16,
+        "bidDate": "2019-08-26T19:33:08Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_4",
+    "name": "Los Miochos  FC",
+    "abbreviation": "LFC",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/back/jersey_0_1564569810640_temp.png",
+    "status": 3,
+    "budget": 138,
+    "squad": {
+      "mpg_championship_player_90152": {
+        "id": "mpg_championship_player_90152",
+        "price": 65,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_80209": {
+        "id": "mpg_championship_player_80209",
+        "price": 35,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_68353": {
+        "id": "mpg_championship_player_68353",
+        "price": 12,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_60772": {
+        "id": "mpg_championship_player_60772",
+        "price": 31,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_40270": {
+        "id": "mpg_championship_player_40270",
+        "price": 55,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_219000": {
+        "id": "mpg_championship_player_219000",
+        "price": 40,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_121117": {
+        "id": "mpg_championship_player_121117",
+        "price": 20,
+        "bidDate": "2019-08-26T18:18:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_88580": {
+        "id": "mpg_championship_player_88580",
+        "price": 30,
+        "bidDate": "2019-08-26T19:15:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_37055": {
+        "id": "mpg_championship_player_37055",
+        "price": 39,
+        "bidDate": "2019-08-26T19:15:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_246333": {
+        "id": "mpg_championship_player_246333",
+        "price": 17,
+        "bidDate": "2019-08-26T19:15:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_116404": {
+        "id": "mpg_championship_player_116404",
+        "price": 13,
+        "bidDate": "2019-08-26T19:15:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_100059": {
+        "id": "mpg_championship_player_100059",
+        "price": 10,
+        "bidDate": "2019-08-26T19:15:50Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_7",
+    "name": "Boca Seniors",
+    "abbreviation": "👴",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/back/jersey_0_1561640737541_temp.png",
+    "status": 3,
+    "budget": 60,
+    "squad": {
+      "mpg_championship_player_89572": {
+        "id": "mpg_championship_player_89572",
+        "price": 8,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_89399": {
+        "id": "mpg_championship_player_89399",
+        "price": 11,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_79627": {
+        "id": "mpg_championship_player_79627",
+        "price": 8,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_77794": {
+        "id": "mpg_championship_player_77794",
+        "price": 11,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_76597": {
+        "id": "mpg_championship_player_76597",
+        "price": 3,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_42786": {
+        "id": "mpg_championship_player_42786",
+        "price": 101,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_19927": {
+        "id": "mpg_championship_player_19927",
+        "price": 101,
+        "bidDate": "2019-08-26T18:01:43Z",
+        "status": 1
+      },
+      "mpg_championship_player_93421": {
+        "id": "mpg_championship_player_93421",
+        "price": 8,
+        "bidDate": "2019-08-26T18:41:56Z",
+        "status": 1
+      },
+      "mpg_championship_player_91406": {
+        "id": "mpg_championship_player_91406",
+        "price": 20,
+        "bidDate": "2019-08-26T18:41:56Z",
+        "status": 1
+      },
+      "mpg_championship_player_86157": {
+        "id": "mpg_championship_player_86157",
+        "price": 21,
+        "bidDate": "2019-08-26T18:41:56Z",
+        "status": 1
+      },
+      "mpg_championship_player_52538": {
+        "id": "mpg_championship_player_52538",
+        "price": 6,
+        "bidDate": "2019-08-26T18:41:56Z",
+        "status": 1
+      },
+      "mpg_championship_player_44989": {
+        "id": "mpg_championship_player_44989",
+        "price": 34,
+        "bidDate": "2019-08-26T18:41:56Z",
+        "status": 1
+      },
+      "mpg_championship_player_39336": {
+        "id": "mpg_championship_player_39336",
+        "price": 101,
+        "bidDate": "2019-08-26T18:41:56Z",
+        "status": 1
+      },
+      "mpg_championship_player_197319": {
+        "id": "mpg_championship_player_197319",
+        "price": 12,
+        "bidDate": "2019-08-26T23:19:45Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_0",
+    "name": "Cuitas las Bananas",
+    "abbreviation": "🍌",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/prod/mpg_jersey_backup_3_a88d117b25a7290b35f03e5eca6fcb4c.png",
+    "status": 3,
+    "budget": 77,
+    "squad": {
+      "mpg_championship_player_81352": {
+        "id": "mpg_championship_player_81352",
+        "price": 47,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_76610": {
+        "id": "mpg_championship_player_76610",
+        "price": 21,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_65807": {
+        "id": "mpg_championship_player_65807",
+        "price": 24,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_428399": {
+        "id": "mpg_championship_player_428399",
+        "price": 52,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_209712": {
+        "id": "mpg_championship_player_209712",
+        "price": 43,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_17740": {
+        "id": "mpg_championship_player_17740",
+        "price": 26,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_166552": {
+        "id": "mpg_championship_player_166552",
+        "price": 52,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_151883": {
+        "id": "mpg_championship_player_151883",
+        "price": 31,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_10316": {
+        "id": "mpg_championship_player_10316",
+        "price": 23,
+        "bidDate": "2019-08-26T17:30:10Z",
+        "status": 1
+      },
+      "mpg_championship_player_96122": {
+        "id": "mpg_championship_player_96122",
+        "price": 13,
+        "bidDate": "2019-08-26T18:47:22Z",
+        "status": 1
+      },
+      "mpg_championship_player_81138": {
+        "id": "mpg_championship_player_81138",
+        "price": 10,
+        "bidDate": "2019-08-26T23:04:15Z",
+        "status": 1
+      },
+      "mpg_championship_player_61256": {
+        "id": "mpg_championship_player_61256",
+        "price": 22,
+        "bidDate": "2019-08-26T23:04:15Z",
+        "status": 1
+      },
+      "mpg_championship_player_42839": {
+        "id": "mpg_championship_player_42839",
+        "price": 11,
+        "bidDate": "2019-08-26T23:04:15Z",
+        "status": 1
+      },
+      "mpg_championship_player_218449": {
+        "id": "mpg_championship_player_218449",
+        "price": 10,
+        "bidDate": "2019-08-26T23:04:15Z",
+        "status": 1
+      },
+      "mpg_championship_player_206255": {
+        "id": "mpg_championship_player_206255",
+        "price": 16,
+        "bidDate": "2019-08-26T23:04:15Z",
+        "status": 1
+      },
+      "mpg_championship_player_181284": {
+        "id": "mpg_championship_player_181284",
+        "price": 22,
+        "bidDate": "2019-08-26T23:04:15Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_5",
+    "name": "tripla nulla",
+    "abbreviation": "000",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/back/jersey_0_1572518212698_temp.png",
+    "status": 3,
+    "budget": 106,
+    "squad": {
+      "mpg_championship_player_98961": {
+        "id": "mpg_championship_player_98961",
+        "price": 11,
+        "bidDate": "2019-08-26T17:28:29Z",
+        "status": 1
+      },
+      "mpg_championship_player_76650": {
+        "id": "mpg_championship_player_76650",
+        "price": 132,
+        "bidDate": "2019-08-26T17:28:29Z",
+        "status": 1
+      },
+      "mpg_championship_player_62991": {
+        "id": "mpg_championship_player_62991",
+        "price": 10,
+        "bidDate": "2019-08-26T17:28:29Z",
+        "status": 1
+      },
+      "mpg_championship_player_54513": {
+        "id": "mpg_championship_player_54513",
+        "price": 13,
+        "bidDate": "2019-08-26T17:28:29Z",
+        "status": 1
+      },
+      "mpg_championship_player_51945": {
+        "id": "mpg_championship_player_51945",
+        "price": 15,
+        "bidDate": "2019-08-26T17:28:29Z",
+        "status": 1
+      },
+      "mpg_championship_player_19054": {
+        "id": "mpg_championship_player_19054",
+        "price": 132,
+        "bidDate": "2019-08-26T17:28:29Z",
+        "status": 1
+      },
+      "mpg_championship_player_59062": {
+        "id": "mpg_championship_player_59062",
+        "price": 11,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      },
+      "mpg_championship_player_242830": {
+        "id": "mpg_championship_player_242830",
+        "price": 11,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      },
+      "mpg_championship_player_178880": {
+        "id": "mpg_championship_player_178880",
+        "price": 15,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      },
+      "mpg_championship_player_152563": {
+        "id": "mpg_championship_player_152563",
+        "price": 11,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      },
+      "mpg_championship_player_109702": {
+        "id": "mpg_championship_player_109702",
+        "price": 19,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      },
+      "mpg_championship_player_107807": {
+        "id": "mpg_championship_player_107807",
+        "price": 4,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      },
+      "mpg_championship_player_100868": {
+        "id": "mpg_championship_player_100868",
+        "price": 15,
+        "bidDate": "2019-08-26T18:24:59Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_6",
+    "name": "Axel maisSi Football Club",
+    "abbreviation": "AFC",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/prod/mpg_jersey_backup_5_e1c5cb798cf638ded8ba80125be693cc.png",
+    "status": 3,
+    "budget": 77,
+    "squad": {
+      "mpg_championship_player_88952": {
+        "id": "mpg_championship_player_88952",
+        "price": 38,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_87026": {
+        "id": "mpg_championship_player_87026",
+        "price": 1,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_76555": {
+        "id": "mpg_championship_player_76555",
+        "price": 48,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_51952": {
+        "id": "mpg_championship_player_51952",
+        "price": 46,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_490310": {
+        "id": "mpg_championship_player_490310",
+        "price": 1,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_420909": {
+        "id": "mpg_championship_player_420909",
+        "price": 1,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_212770": {
+        "id": "mpg_championship_player_212770",
+        "price": 1,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_18221": {
+        "id": "mpg_championship_player_18221",
+        "price": 38,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_158074": {
+        "id": "mpg_championship_player_158074",
+        "price": 31,
+        "bidDate": "2019-08-26T17:38:49Z",
+        "status": 1
+      },
+      "mpg_championship_player_96771": {
+        "id": "mpg_championship_player_96771",
+        "price": 28,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      },
+      "mpg_championship_player_90728": {
+        "id": "mpg_championship_player_90728",
+        "price": 28,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      },
+      "mpg_championship_player_86148": {
+        "id": "mpg_championship_player_86148",
+        "price": 28,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      },
+      "mpg_championship_player_202044": {
+        "id": "mpg_championship_player_202044",
+        "price": 44,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      },
+      "mpg_championship_player_132105": {
+        "id": "mpg_championship_player_132105",
+        "price": 33,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      },
+      "mpg_championship_player_121221": {
+        "id": "mpg_championship_player_121221",
+        "price": 24,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      },
+      "mpg_championship_player_109270": {
+        "id": "mpg_championship_player_109270",
+        "price": 33,
+        "bidDate": "2019-08-26T22:51:28Z",
+        "status": 1
+      }
+    }
+  },
+  {
+    "id": "mpg_team_LLK82D34_1_1_1",
+    "name": "Plato Combinado FC",
+    "abbreviation": "PCF",
+    "jerseyUrl": "https://s3-eu-west-3.amazonaws.com/jersey.mpg.football/back/jersey_0_1561646533972_temp.png",
+    "status": 3,
+    "budget": 84,
+    "squad": {
+      "mpg_championship_player_88483": {
+        "id": "mpg_championship_player_88483",
+        "price": 18,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_76012": {
+        "id": "mpg_championship_player_76012",
+        "price": 24,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_56624": {
+        "id": "mpg_championship_player_56624",
+        "price": 26,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_52356": {
+        "id": "mpg_championship_player_52356",
+        "price": 42,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_42779": {
+        "id": "mpg_championship_player_42779",
+        "price": 41,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_39563": {
+        "id": "mpg_championship_player_39563",
+        "price": 26,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_34703": {
+        "id": "mpg_championship_player_34703",
+        "price": 51,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_224919": {
+        "id": "mpg_championship_player_224919",
+        "price": 2,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_197334": {
+        "id": "mpg_championship_player_197334",
+        "price": 36,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_197316": {
+        "id": "mpg_championship_player_197316",
+        "price": 2,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_17861": {
+        "id": "mpg_championship_player_17861",
+        "price": 41,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_171101": {
+        "id": "mpg_championship_player_171101",
+        "price": 27,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_16872": {
+        "id": "mpg_championship_player_16872",
+        "price": 5,
+        "bidDate": "2019-08-26T17:45:50Z",
+        "status": 1
+      },
+      "mpg_championship_player_77390": {
+        "id": "mpg_championship_player_77390",
+        "price": 31,
+        "bidDate": "2019-08-26T18:41:14Z",
+        "status": 1
+      },
+      "mpg_championship_player_195384": {
+        "id": "mpg_championship_player_195384",
+        "price": 25,
+        "bidDate": "2019-08-26T18:41:14Z",
+        "status": 1
+      },
+      "mpg_championship_player_96785": {
+        "id": "mpg_championship_player_96785",
+        "price": 17,
+        "bidDate": "2019-08-27T06:56:03Z",
+        "status": 1
+      },
+      "mpg_championship_player_154976": {
+        "id": "mpg_championship_player_154976",
+        "price": 7,
+        "bidDate": "2019-08-27T06:56:03Z",
+        "status": 1
+      }
+    }
+  }
+]

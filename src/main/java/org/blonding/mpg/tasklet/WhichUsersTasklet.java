@@ -63,7 +63,7 @@ public class WhichUsersTasklet implements Tasklet {
             contribution.getStepExecution().setExitStatus(ExitStatus.STOPPED);
         }
         if (users.size() < 2) {
-            final String msg = "GrandSlam Cup requires two users minimum";
+            final var msg = "GrandSlam Cup requires two users minimum";
             LOG.error(msg);
             throw new UnsupportedOperationException(msg);
         }

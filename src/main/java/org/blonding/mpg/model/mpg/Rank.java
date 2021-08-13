@@ -15,7 +15,7 @@ public class Rank implements Serializable {
     private int played;
     @JsonProperty("won")
     private int victory;
-    @JsonProperty("dranw")
+    @JsonProperty("drawn")
     private int draw;
     @JsonProperty("lost")
     private int defeat;

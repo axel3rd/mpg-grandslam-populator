@@ -10,11 +10,14 @@ public class Rank implements Serializable {
 
     private static final long serialVersionUID = 7331725661359464274L;
 
-    @JsonProperty("teamid")
+    @JsonProperty("teamId")
     private String teamId;
     private int played;
+    @JsonProperty("won")
     private int victory;
+    @JsonProperty("drawn")
     private int draw;
+    @JsonProperty("lost")
     private int defeat;
     private int difference;
 

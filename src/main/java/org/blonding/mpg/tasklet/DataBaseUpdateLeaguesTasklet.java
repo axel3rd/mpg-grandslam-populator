@@ -3,7 +3,6 @@ package org.blonding.mpg.tasklet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Update leagues informations...");
-        GrandSlam gs = getOrCreateGrandSlam();
+        var gs = getOrCreateGrandSlam();
 
         @SuppressWarnings("unchecked")
         Map<League, LeagueRanking> leaguesMpgOriginal = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution()
@@ -55,7 +54,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
 
         List<org.blonding.mpg.model.db.League> leagues = gs.getLeagues();
         for (Iterator<org.blonding.mpg.model.db.League> it = leagues.iterator(); it.hasNext();) {
-            org.blonding.mpg.model.db.League league = it.next();
+            var league = it.next();
             Entry<League, LeagueRanking> leagueMpgEntry = getLeagueMpgById(leaguesMpg, league.getMpgId());
             if (leagueMpgEntry == null) {
                 LOG.info("League removed: {} - {}", league.getMpgId(), league.getName());
@@ -87,9 +86,9 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
             LOG.info("(Creating GrandSlam, none are in progress)");
             return gso.orElseThrow();
         }
-        Date date = Calendar.getInstance().getTime();
+        var date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/1");
-        GrandSlam gs = new GrandSlam(dateFormat.format(date));
+        var gs = new GrandSlam(dateFormat.format(date));
         return grandSlamRepository.save(gs);
     }
 

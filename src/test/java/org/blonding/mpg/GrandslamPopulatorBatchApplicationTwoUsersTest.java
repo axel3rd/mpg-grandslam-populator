@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM,MLEFEX6G",
-        "mpg.users.exclude=1570437,2237823,963519,1567579,1570437,35635,953561,1520001,1662232,600737" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MLAX7HMK",
+        "mpg.users.exclude=963519,1567579,953561,35635,1520001" })
 @Sql({ "/schema-test.sql", "/datas-test.sql" })
 class GrandslamPopulatorBatchApplicationTwoUsersTest extends AbstractTestMpgData {
 
@@ -21,7 +21,7 @@ class GrandslamPopulatorBatchApplicationTwoUsersTest extends AbstractTestMpgData
 
     @Test
     void defaults() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         assertEquals(ExitStatus.FAILED, jobExecution.getExitStatus());

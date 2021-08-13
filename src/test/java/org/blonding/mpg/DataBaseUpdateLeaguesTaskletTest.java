@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.test.context.jdbc.Sql;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.leagues.include = MLAX7HMK,MLEFEX6G", "mpg.users.exclude=1570437,2237823" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MLAX7HMK", "mpg.leagues.include = LJV92C9Y,MLEFEX6G", "mpg.users.exclude=000000" })
 @Sql({ "/schema-test.sql", "/datas-test.sql" })
 class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
 
@@ -30,7 +30,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
 
     @Test
     void update() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G");
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
         JobExecution jobExecutionWhichUser = jobLauncherTestUtils.launchStep("stepDataBaseUpdateLeagues", jobExecutionMpgData.getExecutionContext());
@@ -42,7 +42,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
 
     @Test
     void delete() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G");
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
 
@@ -58,7 +58,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
 
     @Test
     void add() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G");
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         // PL retrieve in first, not included in configuration => 1

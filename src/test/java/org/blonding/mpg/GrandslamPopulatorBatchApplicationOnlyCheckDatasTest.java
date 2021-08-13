@@ -9,7 +9,7 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.users.exclude=1570437,2237823", "job.check.only=true" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MLAX7HMK", "job.check.only=true" })
 class GrandslamPopulatorBatchApplicationOnlyCheckDatasTest extends AbstractTestMpgData {
 
     @Autowired
@@ -17,7 +17,7 @@ class GrandslamPopulatorBatchApplicationOnlyCheckDatasTest extends AbstractTestM
 
     @Test
     void defaults() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());

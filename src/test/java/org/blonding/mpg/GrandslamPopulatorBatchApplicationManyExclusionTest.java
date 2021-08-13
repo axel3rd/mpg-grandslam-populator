@@ -21,7 +21,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.util.StringUtils;
 
-@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM,MLEFEX6G", "mpg.users.exclude=1570437,2237823,963519,1567579" })
+@SpringBootTest(properties = { "mpg.leagues.exclude = MLAX7HMK,MN7VSYBM,MLEFEX6G", "mpg.users.exclude=1567579,963519" })
 @Sql({ "/schema-test.sql", "/datas-test.sql" })
 class GrandslamPopulatorBatchApplicationManyExclusionTest extends AbstractTestMpgData {
 
@@ -36,7 +36,7 @@ class GrandslamPopulatorBatchApplicationManyExclusionTest extends AbstractTestMp
 
     @Test
     void defaults() throws Exception {
-        mockMpgBackend("20201128", "MLAX7HMK", "MLEFEX6G", "MLMHBPCB");
+        mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         for (StepExecution stepExecution : jobExecution.getStepExecutions()) {
@@ -44,7 +44,7 @@ class GrandslamPopulatorBatchApplicationManyExclusionTest extends AbstractTestMp
                     StringUtils.hasText(stepExecution.getExitStatus().getExitDescription()));
         }
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
-        assertEquals(6, playerRepository.findAll().size());
+        assertEquals(4, playerRepository.findAll().size());
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         List<League> leagues = gs.getLeagues();

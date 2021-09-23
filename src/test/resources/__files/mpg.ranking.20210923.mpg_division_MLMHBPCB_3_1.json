@@ -1,0 +1,305 @@
+{
+  "standings": [
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_2",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "dwww",
+      "played": 4,
+      "won": 3,
+      "drawn": 1,
+      "lost": 0,
+      "goals": 11,
+      "goalsConceded": 1,
+      "difference": 10,
+      "points": 10,
+      "rank": 1,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_5",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "lwww",
+      "played": 4,
+      "won": 3,
+      "drawn": 0,
+      "lost": 1,
+      "goals": 14,
+      "goalsConceded": 8,
+      "difference": 6,
+      "points": 9,
+      "rank": 2,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_9",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "wwwl",
+      "played": 4,
+      "won": 3,
+      "drawn": 0,
+      "lost": 1,
+      "goals": 12,
+      "goalsConceded": 6,
+      "difference": 6,
+      "points": 9,
+      "rank": 3,
+      "variation": -1
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_6",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "wlwd",
+      "played": 4,
+      "won": 2,
+      "drawn": 1,
+      "lost": 1,
+      "goals": 13,
+      "goalsConceded": 10,
+      "difference": 3,
+      "points": 7,
+      "rank": 4,
+      "variation": 0
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_1",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "wllw",
+      "played": 4,
+      "won": 2,
+      "drawn": 0,
+      "lost": 2,
+      "goals": 9,
+      "goalsConceded": 8,
+      "difference": 1,
+      "points": 6,
+      "rank": 5,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_7",
+      "rotaldo": false,
+      "bonusUsed": false,
+      "series": "lwlw",
+      "played": 4,
+      "won": 2,
+      "drawn": 0,
+      "lost": 2,
+      "goals": 10,
+      "goalsConceded": 12,
+      "difference": -2,
+      "points": 6,
+      "rank": 6,
+      "variation": 1
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_8",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "llwd",
+      "played": 4,
+      "won": 1,
+      "drawn": 1,
+      "lost": 2,
+      "goals": 7,
+      "goalsConceded": 10,
+      "difference": -3,
+      "points": 4,
+      "rank": 7,
+      "variation": 0
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_4",
+      "rotaldo": true,
+      "bonusUsed": false,
+      "series": "dwll",
+      "played": 4,
+      "won": 1,
+      "drawn": 1,
+      "lost": 2,
+      "goals": 6,
+      "goalsConceded": 9,
+      "difference": -3,
+      "points": 4,
+      "rank": 8,
+      "variation": -1
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_3",
+      "rotaldo": true,
+      "bonusUsed": true,
+      "series": "wlll",
+      "played": 4,
+      "won": 1,
+      "drawn": 0,
+      "lost": 3,
+      "goals": 7,
+      "goalsConceded": 15,
+      "difference": -8,
+      "points": 3,
+      "rank": 9,
+      "variation": 0
+    },
+    {
+      "teamId": "mpg_team_MLMHBPCB_3_1_0",
+      "rotaldo": false,
+      "bonusUsed": true,
+      "series": "llll",
+      "played": 4,
+      "won": 0,
+      "drawn": 0,
+      "lost": 4,
+      "goals": 6,
+      "goalsConceded": 16,
+      "difference": -10,
+      "points": 0,
+      "rank": 10,
+      "variation": 0
+    }
+  ],
+  "teamsUsers": {
+    "mpg_team_MLMHBPCB_3_1_7": {
+      "id": "user_1662232",
+      "firstName": "Youenn",
+      "username": "Youennn",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/1a74d8bc-c9c7-4c3f-a18e-e430c12839ab.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_150"
+        }
+      },
+      "createdAt": "2018-12-20T07:27:03Z",
+      "lastLogin": "2021-09-23T05:06:16Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_2": {
+      "id": "user_1567579",
+      "firstName": "Mat",
+      "username": "Master",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/56b2b4d5-8f83-40a6-8147-c190ae5da861.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_144"
+        }
+      },
+      "createdAt": "2018-09-17T08:12:12Z",
+      "lastLogin": "2021-09-23T21:03:31Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_1": {
+      "id": "user_1520001",
+      "firstName": "Typhaine",
+      "username": "Licornasse",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/73f9185d-11f7-4c4c-a7bc-52d4608d704f.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_144"
+        }
+      },
+      "createdAt": "2018-08-26T12:17:17Z",
+      "lastLogin": "2021-09-23T21:26:38Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_9": {
+      "id": "user_1570437",
+      "firstName": "Tony",
+      "username": "Gwada971",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/56b2b4d5-8f83-40a6-8147-c190ae5da861.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_149"
+        }
+      },
+      "createdAt": "2018-09-18T08:41:04Z",
+      "lastLogin": "2021-09-23T20:12:38Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_5": {
+      "id": "user_963519",
+      "firstName": "David",
+      "username": "David#XDXZ",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/aa45fef9-b430-4816-9080-cc865eda73cb.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_152"
+        }
+      },
+      "createdAt": "2018-06-08T09:29:35Z",
+      "lastLogin": "2021-09-23T16:58:38Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_4": {
+      "id": "user_955966",
+      "firstName": "Alix",
+      "username": "axel3rd",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/8a2f0ce7-1b99-43ec-bbde-e64261b65ae4.png",
+      "applicationsData": {
+        "mpg": {
+          "level": 2,
+          "mainFavoriteClubId": "mpg_championship_club_149"
+        }
+      },
+      "createdAt": "2018-06-07T17:51:58Z",
+      "lastLogin": "2021-09-23T21:33:12Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_3": {
+      "id": "user_953561",
+      "firstName": "Mansuy",
+      "username": "Mansuy",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/874b44b5-2e4a-483a-a196-786131521570.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_148"
+        }
+      },
+      "createdAt": "2018-06-07T15:13:34Z",
+      "lastLogin": "2021-09-23T06:42:16Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_6": {
+      "id": "user_600737",
+      "firstName": "Celine",
+      "username": "Celbzh",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/0dbb71f0-ebb3-4b5a-a7e5-cecd5eb33e5f.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_150"
+        }
+      },
+      "createdAt": "2017-10-18T20:57:38Z",
+      "lastLogin": "2021-09-23T04:57:24Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_8": {
+      "id": "user_28952",
+      "firstName": "Ole Gunnar",
+      "username": "Sampa_Et_Oli",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/56b2b4d5-8f83-40a6-8147-c190ae5da861.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 2
+        }
+      },
+      "createdAt": "2012-12-21T13:12:28.000Z",
+      "lastLogin": "2021-09-21T10:04:37Z"
+    },
+    "mpg_team_MLMHBPCB_3_1_0": {
+      "id": "user_35635",
+      "firstName": "Bertrand",
+      "username": "Bimou",
+      "avatarUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/2dd3cf73-8ee9-4103-b9eb-0bff89d6afa6.jpg",
+      "applicationsData": {
+        "mpg": {
+          "level": 1,
+          "mainFavoriteClubId": "mpg_championship_club_3"
+        }
+      },
+      "createdAt": "2013-02-18T10:26:41.000Z",
+      "lastLogin": "2021-09-23T21:34:09Z"
+    }
+  }
+}

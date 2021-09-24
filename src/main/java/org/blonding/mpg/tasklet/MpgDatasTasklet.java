@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang3.StringUtils;
 import org.blonding.mpg.MpgConfig;
 import org.blonding.mpg.model.mpg.Dashboard;
 import org.blonding.mpg.model.mpg.League;
@@ -60,6 +61,8 @@ public class MpgDatasTasklet implements Tasklet {
                 LOG.info("League {} removed, excluded", league.getId());
             } else if (!mpgConfig.getLeaguesInclude().isEmpty() && !mpgConfig.getLeaguesInclude().contains(league.getId())) {
                 LOG.info("League {} removed, not in leagues included", league.getId());
+            } else if (StringUtils.isBlank(league.getDivisionId())) {
+                LOG.info("League {} removed, 'followed' so not in a division", league.getId());
             } else {
                 var leagueRanking = getLeagueRankingAndTeamInfos(client, token, league);
                 if (leagueRanking != null) {

@@ -37,11 +37,11 @@
       "imageUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/906387dc-2dbe-464d-a21e-a16f0cff5001.jpg",
       "totalDivisions": 1,
       "totalUsers": 10,
-      "totalMissedPosts": 0,
+      "totalMissedPosts": 1,
       "divisionNumber": 1,
       "nextRealGameWeekDate": "2021-09-25T11:30:00Z",
-      "currentTeamRanking": 8,
-      "currentTeamVariation": -1,
+      "currentTeamRanking": 9,
+      "currentTeamVariation": 0,
       "divisionStatus": 4,
       "divisionId": "mpg_division_MLMHBPCB_3_1",
       "divisionTotalUsers": 10,
@@ -55,8 +55,8 @@
           "mpg_team_MLMHBPCB_3_1_3": 1,
           "mpg_team_MLMHBPCB_3_1_4": 2,
           "mpg_team_MLMHBPCB_3_1_5": 1,
-          "mpg_team_MLMHBPCB_3_1_6": 1,
-          "mpg_team_MLMHBPCB_3_1_7": 1,
+          "mpg_team_MLMHBPCB_3_1_6": 2,
+          "mpg_team_MLMHBPCB_3_1_7": 2,
           "mpg_team_MLMHBPCB_3_1_8": 2,
           "mpg_team_MLMHBPCB_3_1_9": 2
         },
@@ -105,7 +105,7 @@
         },
         "totalGameWeeks": 18
       },
-      "currentFormationStatus": 2
+      "currentFormationStatus": 1
     },
     {
       "leagueId": "mpg_league_MLEFEX6G",
@@ -127,8 +127,8 @@
       "totalMissedPosts": 0,
       "divisionNumber": 1,
       "nextRealGameWeekDate": "2021-09-24T19:00:00Z",
-      "currentTeamRanking": 10,
-      "currentTeamVariation": -1,
+      "currentTeamRanking": 4,
+      "currentTeamVariation": 1,
       "divisionStatus": 4,
       "divisionId": "mpg_division_MLEFEX6G_3_1",
       "divisionTotalUsers": 10,
@@ -140,12 +140,12 @@
           "mpg_team_MLEFEX6G_3_1_1": 1,
           "mpg_team_MLEFEX6G_3_1_2": 2,
           "mpg_team_MLEFEX6G_3_1_3": 1,
-          "mpg_team_MLEFEX6G_3_1_4": 1,
+          "mpg_team_MLEFEX6G_3_1_4": 2,
           "mpg_team_MLEFEX6G_3_1_5": 1,
           "mpg_team_MLEFEX6G_3_1_6": 1,
           "mpg_team_MLEFEX6G_3_1_7": 1,
           "mpg_team_MLEFEX6G_3_1_8": 1,
-          "mpg_team_MLEFEX6G_3_1_9": 1
+          "mpg_team_MLEFEX6G_3_1_9": 2
         },
         "liveAt": "2021-07-30T06:34:57Z",
         "standings": {
@@ -192,7 +192,7 @@
         },
         "totalGameWeeks": 18
       },
-      "currentFormationStatus": 2
+      "currentFormationStatus": 1
     },
     {
       "leagueId": "mpg_league_MLAX7HMK",
@@ -211,11 +211,11 @@
       "imageUrl": "https://s3.eu-west-1.amazonaws.com/image.mpg/9db725b3-fe27-42b4-9575-55cfbeef30d2.png",
       "totalDivisions": 1,
       "totalUsers": 10,
-      "totalMissedPosts": 0,
+      "totalMissedPosts": 3,
       "divisionNumber": 1,
       "nextRealGameWeekDate": "2021-09-25T15:00:00Z",
-      "currentTeamRanking": 6,
-      "currentTeamVariation": 1,
+      "currentTeamRanking": 9,
+      "currentTeamVariation": 0,
       "divisionStatus": 4,
       "divisionId": "mpg_division_MLAX7HMK_3_1",
       "divisionTotalUsers": 10,
@@ -225,13 +225,13 @@
         "formationsStatuses": {
           "mpg_team_MLAX7HMK_3_1_0": 1,
           "mpg_team_MLAX7HMK_3_1_1": 2,
-          "mpg_team_MLAX7HMK_3_1_2": 1,
+          "mpg_team_MLAX7HMK_3_1_2": 2,
           "mpg_team_MLAX7HMK_3_1_3": 2,
           "mpg_team_MLAX7HMK_3_1_4": 2,
           "mpg_team_MLAX7HMK_3_1_5": 1,
           "mpg_team_MLAX7HMK_3_1_6": 2,
           "mpg_team_MLAX7HMK_3_1_7": 2,
-          "mpg_team_MLAX7HMK_3_1_8": 1,
+          "mpg_team_MLAX7HMK_3_1_8": 2,
           "mpg_team_MLAX7HMK_3_1_9": 2
         },
         "liveAt": "2021-08-11T22:17:51Z",
@@ -279,8 +279,8 @@
         },
         "totalGameWeeks": 18
       },
-      "currentFormationStatus": 2
+      "currentFormationStatus": 1
     }
   ],
-  "defaultOrder": false
+  "defaultOrder": true
 }

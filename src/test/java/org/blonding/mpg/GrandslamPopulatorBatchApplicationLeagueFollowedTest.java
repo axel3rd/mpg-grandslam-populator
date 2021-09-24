@@ -21,9 +21,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.util.StringUtils;
 
-@SpringBootTest(properties = {})
+@SpringBootTest(properties = { "mpg.leagues.exclude = MN7VSYBM", "mpg.users.exclude = 1570437,2237823" })
 @Sql({ "/schema-test.sql", "/datas-20210913-test.sql" })
-class GrandslamPopulatorBatchApplicationFixNullInUrlTest extends AbstractTestMpgData {
+class GrandslamPopulatorBatchApplicationLeagueFollowedTest extends AbstractTestMpgData {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -38,6 +38,7 @@ class GrandslamPopulatorBatchApplicationFixNullInUrlTest extends AbstractTestMpg
     void defaults() throws Exception {
 
         // Before fix, fail with: "400 Bad Request from GET https://api.mpg.football/division/null/ranking/standings"
+        // Root cause: When a league is "followed" in MPG, it has not divisionId
 
         mockMpgBackend("20210923", "MLMHBPCB", "MLEFEX6G", "MLAX7HMK");
 

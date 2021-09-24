@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.3</version>
+        <version>2.5.5</version>
     </parent>
     <groupId>org.blonding.mpg</groupId>
     <artifactId>grandslam-populator-batch</artifactId>
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>com.thomaskasene.wiremock</groupId>
             <artifactId>wiremock-junit-extension</artifactId>
-            <version>0.2.0.RELEASE</version>
+            <version>1.0.0.RELEASE</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -121,5 +121,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

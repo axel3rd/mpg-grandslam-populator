@@ -44,7 +44,7 @@ class GrandslamPopulatorBatchApplicationWithEndLeagueTest extends AbstractTestMp
                     StringUtils.hasText(stepExecution.getExitStatus().getExitDescription()));
         }
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
-        assertEquals(6, playerRepository.findAll().size());
+        assertEquals(6, playerRepository.findAllByActive(true).size());
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         List<League> leagues = gs.getLeagues();

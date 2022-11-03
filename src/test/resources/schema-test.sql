@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mpg_id` int(11) NOT NULL, 
   `name` varchar(255) NOT NULL,
+  `active` BOOLEAN,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4;
 

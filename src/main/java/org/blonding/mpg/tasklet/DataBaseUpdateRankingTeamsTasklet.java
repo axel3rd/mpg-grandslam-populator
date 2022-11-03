@@ -56,7 +56,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             throw new UnsupportedOperationException("Object 'leaguesMpgOriginal' cannot be null here");
         }
 
-        List<Player> players = playerRepository.findAll();
+        List<Player> players = playerRepository.findAllByActive(true);
         Map<Integer, Long> players2usersMpgMap = players.stream().collect(Collectors.toMap(Player::getId, Player::getMpgId));
         Map<Long, Integer> usersMpg2PlayersMap = players.stream().collect(Collectors.toMap(Player::getMpgId, Player::getId));
 
@@ -73,7 +73,12 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
         List<org.blonding.mpg.model.db.League> leagues = gs.getLeagues();
         for (org.blonding.mpg.model.db.League league : leagues) {
             for (Team team : league.getTeams()) {
-                // No delete to manage here, players and leagues previous updates have done deletion (if any) by foreign key
+                // Team could have to be delete when player has been deactivated
+                if (!players2usersMpgMap.containsKey(team.getPlayerId())) {
+                    LOG.info("Team removed due to user deactivation: {}", team.getName());
+                    teamRepository.delete(team);
+                    continue;
+                }
                 MpgUser user = users.stream().filter(u -> u.getMpgId() == players2usersMpgMap.get(team.getPlayerId())).findFirst().orElseThrow();
                 var rank = getRank(leaguesMpg, league.getMpgId(), user.getMpgId());
                 LOG.info("Ranking update for '{} / {}' with victory={} draw={} defeat={} diff={}", league.getMpgId(), user.getName(),

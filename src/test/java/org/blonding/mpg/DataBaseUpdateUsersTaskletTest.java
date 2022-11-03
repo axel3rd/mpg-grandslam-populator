@@ -50,7 +50,7 @@ class DataBaseUpdateUsersTaskletTest {
     }
 
     @Test
-    void delete() throws Exception {
+    void deactivate() throws Exception {
         ExecutionContext jobExecutionContext = new ExecutionContext();
         List<MpgUser> users = getMpgUsers();
         users.remove(0);
@@ -58,6 +58,8 @@ class DataBaseUpdateUsersTaskletTest {
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("stepDataBaseUpdateUsers", jobExecutionContext);
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
         List<Player> players = playerRepository.findAll();
+        assertEquals(8, players.size());
+        players = playerRepository.findAllByActive(true);
         assertEquals(7, players.size());
         for (Player player : players) {
             assertTrue(player.getName(), player.getName().endsWith("."));

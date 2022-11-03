@@ -42,18 +42,21 @@ public class DataBaseUpdateUsersTasklet implements Tasklet {
             Player player = it.next();
             String userName = usersMap.get(player.getMpgId());
             if (!StringUtils.hasText(userName)) {
-                // Deletion
-                LOG.info("Player removed: '{}'", player.getName());
-                playerRepository.delete(player);
-                it.remove();
+                // Deactivate if not in current MPG game
+                if (player.isActive()) {
+                    LOG.info("Player deactivated: '{}'", player.getName());
+                    player.setActive(false);
+                }
             } else if (userName.equals(player.getName())) {
-                // Nothing
+                // Nothing but enforce active player
                 it.remove();
+                player.setActive(true);
                 usersMap.remove(player.getMpgId());
             } else {
                 // Update name
                 LOG.info("Player name update: '{}' -> '{}'", player.getName(), userName);
                 player.setName(userName);
+                player.setActive(true);
                 usersMap.remove(player.getMpgId());
             }
         }

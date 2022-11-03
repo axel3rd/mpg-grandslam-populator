@@ -44,7 +44,7 @@ class GrandslamPopulatorBatchApplicationManyExclusionTest extends AbstractTestMp
                     StringUtils.hasText(stepExecution.getExitStatus().getExitDescription()));
         }
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
-        assertEquals(4, playerRepository.findAll().size());
+        assertEquals(4, playerRepository.findAllByActive(true).size());
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         List<League> leagues = gs.getLeagues();

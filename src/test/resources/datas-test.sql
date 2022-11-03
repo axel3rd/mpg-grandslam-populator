@@ -1,12 +1,12 @@
-INSERT INTO `player` (`id`, `mpg_id`, `name`) VALUES
-    (73, 955966, 'Alix'),
-    (74, 35635, 'Bertrand'),
-    (75, 600737, 'Céline'),
-    (76, 963519, 'David'),
-    (77, 953561, 'Mansuy'),
-    (78, 1567579, 'Mat'),
-    (79, 1520001, 'Typhaine'),
-    (80, 1662232, 'Youen');
+INSERT INTO `player` (`id`, `mpg_id`, `name`, `active`) VALUES
+    (73, 955966, 'Alix', true),
+    (74, 35635, 'Bertrand', false),
+    (75, 600737, 'Céline', true),
+    (76, 963519, 'David', false),
+    (77, 953561, 'Mansuy', false),
+    (78, 1567579, 'Mat', true),
+    (79, 1520001, 'Typhaine', false),
+    (80, 1662232, 'Youen', false);
 
 INSERT INTO `grand_slam` (`id`, `year`, `status`) VALUES
     (7, '2019/2', 'Closed'),

@@ -83,9 +83,11 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
     private GrandSlam getOrCreateGrandSlam() {
         Optional<GrandSlam> gso = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning()));
         if (gso.isPresent()) {
-            LOG.info("(Creating GrandSlam, none are in progress)");
-            return gso.orElseThrow();
+            GrandSlam gs = gso.orElseThrow();
+            LOG.info("Use GrandSlam: {}", gs.getYear());
+            return gs;
         }
+        LOG.info("(Creating GrandSlam, none are in progress)");
         var date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/1");
         var gs = new GrandSlam(dateFormat.format(date));

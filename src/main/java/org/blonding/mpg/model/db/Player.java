@@ -20,6 +20,8 @@ public class Player {
 
     private String name;
 
+    private boolean active;
+
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "playerId", updatable = false)
     private List<Team> teams;
@@ -36,6 +38,7 @@ public class Player {
         super();
         this.mpgId = mpgId;
         this.name = name;
+        this.active = true;
     }
 
     public Integer getId() {
@@ -54,4 +57,11 @@ public class Player {
         this.name = name;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

@@ -33,7 +33,7 @@ class DataBaseUpdateGrandSlamDaysTaskletTest {
     private GrandSlamRepository grandSlamRepository;
 
     @Test
-    void add() throws Exception {
+    void add() {
         int initial = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow().getGrandSlamDays().size();
         ExecutionContext jobExecutionContext = new ExecutionContext();
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("stepDataBaseUpdateGrandSlamDays", jobExecutionContext);

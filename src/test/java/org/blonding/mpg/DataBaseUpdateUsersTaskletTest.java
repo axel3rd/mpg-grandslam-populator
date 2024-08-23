@@ -37,7 +37,7 @@ class DataBaseUpdateUsersTaskletTest {
     private PlayerRepository playerRepository;
 
     @Test
-    void update() throws Exception {
+    void update() {
         ExecutionContext jobExecutionContext = new ExecutionContext();
         jobExecutionContext.put("users", getMpgUsers());
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("stepDataBaseUpdateUsers", jobExecutionContext);
@@ -50,7 +50,7 @@ class DataBaseUpdateUsersTaskletTest {
     }
 
     @Test
-    void deactivate() throws Exception {
+    void deactivate() {
         ExecutionContext jobExecutionContext = new ExecutionContext();
         List<MpgUser> users = getMpgUsers();
         users.remove(0);
@@ -67,7 +67,7 @@ class DataBaseUpdateUsersTaskletTest {
     }
 
     @Test
-    void add() throws Exception {
+    void add() {
         playerRepository.deleteAll();
         ExecutionContext jobExecutionContext = new ExecutionContext();
         jobExecutionContext.put("users", getMpgUsers());

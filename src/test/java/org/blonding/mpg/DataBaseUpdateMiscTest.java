@@ -31,14 +31,14 @@ class DataBaseUpdateMiscTest {
     private LeagueRepository leagueRepository;
 
     @Test
-    void deleteLeagues() throws Exception {
+    void deleteLeagues() {
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         leagueRepository.deleteAll(gs.getLeagues());
         assertEquals(0, grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow().getLeagues().size());
     }
 
     @Test
-    void deleteGrandSlam() throws Exception {
+    void deleteGrandSlam() {
         // Simple test method to validate foreign key in database on the "master" item that the GrandSlam is
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
         grandSlamRepository.delete(gs);

@@ -24,8 +24,13 @@ public class DataBaseUpdateUsersTasklet implements Tasklet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataBaseUpdateUsersTasklet.class);
 
+    private final PlayerRepository playerRepository;
+
     @Autowired
-    private PlayerRepository playerRepository;
+    private DataBaseUpdateUsersTasklet(PlayerRepository playerRepository) {
+        super();
+        this.playerRepository = playerRepository;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {

@@ -31,11 +31,16 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataBaseUpdateLeaguesTasklet.class);
 
-    @Autowired
-    private GrandSlamRepository grandSlamRepository;
+    private final GrandSlamRepository grandSlamRepository;
+
+    private final LeagueRepository leagueRepository;
 
     @Autowired
-    private LeagueRepository leagueRepository;
+    private DataBaseUpdateLeaguesTasklet(GrandSlamRepository grandSlamRepository, LeagueRepository leagueRepository) {
+        super();
+        this.grandSlamRepository = grandSlamRepository;
+        this.leagueRepository = leagueRepository;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
@@ -43,14 +48,12 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
         var gs = getOrCreateGrandSlam();
 
         @SuppressWarnings("unchecked")
-        Map<League, LeagueRanking> leaguesMpgOriginal = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution()
-                .getExecutionContext().get("leagues");
+        Map<League, LeagueRanking> leaguesMpgOriginal = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution().getExecutionContext().get("leagues");
         if (leaguesMpgOriginal == null) {
             throw new UnsupportedOperationException("Object 'leaguesMpgOriginal' cannot be null here");
         }
         // Copy to new map
-        Map<League, LeagueRanking> leaguesMpg = leaguesMpgOriginal.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        Map<League, LeagueRanking> leaguesMpg = leaguesMpgOriginal.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         List<org.blonding.mpg.model.db.League> leagues = gs.getLeagues();
         for (Iterator<org.blonding.mpg.model.db.League> it = leagues.iterator(); it.hasNext();) {
@@ -62,8 +65,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
                 leagueRepository.delete(league);
             } else {
                 int played = getLeagueGamePlayed(leagueMpgEntry.getValue().getRanks());
-                LOG.info("League update with games played: {} ({}) -> {}", leagueMpgEntry.getKey().getId(), leagueMpgEntry.getKey().getName(),
-                        played);
+                LOG.info("League update with games played: {} ({}) -> {}", leagueMpgEntry.getKey().getId(), leagueMpgEntry.getKey().getName(), played);
                 league.setName(leagueMpgEntry.getKey().getName());
                 league.setType(leagueMpgEntry.getKey().getChampionship().getName());
                 league.setGamePlayed(played);
@@ -73,8 +75,7 @@ public class DataBaseUpdateLeaguesTasklet implements Tasklet {
         for (Entry<League, LeagueRanking> l : leaguesMpg.entrySet()) {
             int played = getLeagueGamePlayed(l.getValue().getRanks());
             LOG.info("League add with games played: {} ({}) -> {}", l.getKey().getId(), l.getKey().getName(), played);
-            leagues.add(new org.blonding.mpg.model.db.League(l.getKey().getId(), l.getKey().getChampionship().name(), l.getKey().getName(),
-                    gs.getYear(), gs.getStatus(), gs.getId(), played));
+            leagues.add(new org.blonding.mpg.model.db.League(l.getKey().getId(), l.getKey().getChampionship().name(), l.getKey().getName(), gs.getYear(), gs.getStatus(), gs.getId(), played));
         }
         leagueRepository.saveAll(leagues);
         return RepeatStatus.FINISHED;

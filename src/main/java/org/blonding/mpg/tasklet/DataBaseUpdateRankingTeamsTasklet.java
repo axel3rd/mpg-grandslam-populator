@@ -32,14 +32,19 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataBaseUpdateRankingTeamsTasklet.class);
 
-    @Autowired
-    private GrandSlamRepository grandSlamRepository;
+    private final GrandSlamRepository grandSlamRepository;
+
+    private final PlayerRepository playerRepository;
+
+    private final TeamRepository teamRepository;
 
     @Autowired
-    private PlayerRepository playerRepository;
-
-    @Autowired
-    private TeamRepository teamRepository;
+    private DataBaseUpdateRankingTeamsTasklet(GrandSlamRepository grandSlamRepository, PlayerRepository playerRepository, TeamRepository teamRepository) {
+        super();
+        this.grandSlamRepository = grandSlamRepository;
+        this.playerRepository = playerRepository;
+        this.teamRepository = teamRepository;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
@@ -50,8 +55,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             throw new UnsupportedOperationException("Object 'users' cannot be null here");
         }
         @SuppressWarnings("unchecked")
-        Map<League, LeagueRanking> leaguesMpg = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution().getExecutionContext()
-                .get("leagues");
+        Map<League, LeagueRanking> leaguesMpg = (Map<League, LeagueRanking>) contribution.getStepExecution().getJobExecution().getExecutionContext().get("leagues");
         if (leaguesMpg == null) {
             throw new UnsupportedOperationException("Object 'leaguesMpgOriginal' cannot be null here");
         }
@@ -81,8 +85,8 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
                 }
                 MpgUser user = users.stream().filter(u -> u.getMpgId() == players2usersMpgMap.get(team.getPlayerId())).findFirst().orElseThrow();
                 var rank = getRank(leaguesMpg, league.getMpgId(), user.getMpgId());
-                LOG.info("Ranking update for '{} / {}' with victory={} draw={} defeat={} diff={}", league.getMpgId(), user.getName(),
-                        rank.getVictory(), rank.getDraw(), rank.getDefeat(), rank.getDifference());
+                LOG.info("Ranking update for '{} / {}' with victory={} draw={} defeat={} diff={}", league.getMpgId(), user.getName(), rank.getVictory(), rank.getDraw(), rank.getDefeat(),
+                        rank.getDifference());
                 var teamMpg = getTeam(leaguesMpg, league.getMpgId(), user.getMpgId());
                 team.setName(teamMpg.getName());
                 team.setShortName(teamMpg.getShortName());
@@ -103,8 +107,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
             var userUid = Long.valueOf(id.split("_")[1]);
             MpgUser user = users.stream().filter(u -> u.getMpgId() == userUid).findFirst().orElseThrow();
             var rank = getRank(leaguesMpg, league, userUid);
-            LOG.info("Ranking add for '{} / {}' with victory={} draw={} defeat={} diff={}", league, user.getName(), rank.getVictory(), rank.getDraw(),
-                    rank.getDefeat(), rank.getDifference());
+            LOG.info("Ranking add for '{} / {}' with victory={} draw={} defeat={} diff={}", league, user.getName(), rank.getVictory(), rank.getDraw(), rank.getDefeat(), rank.getDifference());
             var team = new Team();
             var teamMpg = getTeam(leaguesMpg, league, user.getMpgId());
             team.setPlayerId(usersMpg2PlayersMap.get(userUid));
@@ -134,8 +137,7 @@ public class DataBaseUpdateRankingTeamsTasklet implements Tasklet {
         for (Entry<League, LeagueRanking> entry : leaguesMpg.entrySet()) {
             if (entry.getKey().getId().equals(league)) {
                 LeagueRanking lr = entry.getValue();
-                String teamUserId = lr.getTeams().values().stream().filter(p -> p.getUserId().equals("user_" + user)).findFirst().orElseThrow()
-                        .getId();
+                String teamUserId = lr.getTeams().values().stream().filter(p -> p.getUserId().equals("user_" + user)).findFirst().orElseThrow().getId();
                 return lr.getRanks().stream().filter(p -> p.getTeamId().equals(teamUserId)).findFirst().orElseThrow();
             }
         }

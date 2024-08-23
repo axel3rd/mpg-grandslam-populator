@@ -37,19 +37,23 @@ public class MpgDatasTasklet implements Tasklet {
 
     private static final String HEADER_AUTHORIZATION = "authorization";
 
+    private final MpgConfig mpgConfig;
+
     @Autowired
-    private MpgConfig mpgConfig;
+    private MpgDatasTasklet(MpgConfig mpgConfig) {
+        super();
+        this.mpgConfig = mpgConfig;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Retrieve MPG Datas and Leagues to use...");
-        WebClient client = WebClient.builder().defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).baseUrl(mpgConfig.getUrl())
-                .build();
+        WebClient client = WebClient.builder().defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).baseUrl(mpgConfig.getUrl()).build();
         String token = client.post().uri("/user/sign-in").accept(MediaType.APPLICATION_JSON)
-                .body(Mono.just(new UserSignInRequest(mpgConfig.getEmail(), mpgConfig.getPassword())), UserSignInRequest.class).retrieve()
-                .bodyToMono(UserSignIn.class).blockOptional().orElseThrow().getToken();
-        Dashboard dasboard = client.get().uri("/dashboard/leagues").accept(MediaType.APPLICATION_JSON).header(HEADER_AUTHORIZATION, token).retrieve()
-                .toEntity(Dashboard.class).blockOptional().orElseThrow().getBody();
+                .body(Mono.just(new UserSignInRequest(mpgConfig.getEmail(), mpgConfig.getPassword())), UserSignInRequest.class).retrieve().bodyToMono(UserSignIn.class).blockOptional().orElseThrow()
+                .getToken();
+        Dashboard dasboard = client.get().uri("/dashboard/leagues").accept(MediaType.APPLICATION_JSON).header(HEADER_AUTHORIZATION, token).retrieve().toEntity(Dashboard.class).blockOptional()
+                .orElseThrow().getBody();
         if (dasboard == null) {
             throw new UnsupportedOperationException("The 'dasboard' cannot be null here");
         }
@@ -80,8 +84,8 @@ public class MpgDatasTasklet implements Tasklet {
     }
 
     private LeagueRanking getLeagueRankingAndTeamInfos(WebClient client, String token, League league) {
-        var leagueRanking = client.get().uri("/division/" + league.getDivisionId() + "/ranking/standings").accept(MediaType.APPLICATION_JSON)
-                .header(HEADER_AUTHORIZATION, token).retrieve().toEntity(LeagueRanking.class).blockOptional().orElseThrow().getBody();
+        var leagueRanking = client.get().uri("/division/" + league.getDivisionId() + "/ranking/standings").accept(MediaType.APPLICATION_JSON).header(HEADER_AUTHORIZATION, token).retrieve()
+                .toEntity(LeagueRanking.class).blockOptional().orElseThrow().getBody();
         if (leagueRanking == null) {
             throw new UnsupportedOperationException("The 'leagueRanking' cannot be null here");
         }
@@ -90,8 +94,8 @@ public class MpgDatasTasklet implements Tasklet {
             return null;
         }
         LOG.info("League {} taken into account", league.getId());
-        List<Team> teams = client.get().uri("/division/" + league.getDivisionId() + "/teams").accept(MediaType.APPLICATION_JSON)
-                .header(HEADER_AUTHORIZATION, token).retrieve().toEntity(new ParameterizedTypeReference<List<Team>>() {
+        List<Team> teams = client.get().uri("/division/" + league.getDivisionId() + "/teams").accept(MediaType.APPLICATION_JSON).header(HEADER_AUTHORIZATION, token).retrieve()
+                .toEntity(new ParameterizedTypeReference<List<Team>>() {
                 }).blockOptional().orElseThrow().getBody();
         if (teams == null) {
             throw new UnsupportedOperationException("The 'teams' cannot be null here");

@@ -24,23 +24,26 @@ public class WhichUsersTasklet implements Tasklet {
 
     private static final Logger LOG = LoggerFactory.getLogger(WhichUsersTasklet.class);
 
+    private final MpgConfig mpgConfig;
+
     @Autowired
-    private MpgConfig mpgConfig;
+    private WhichUsersTasklet(MpgConfig mpgConfig) {
+        super();
+        this.mpgConfig = mpgConfig;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         LOG.info("--- Calculate users intersection...");
         @SuppressWarnings("unchecked")
-        Map<League, LeagueRanking> leagues = (Map<League, LeagueRanking>) chunkContext.getStepContext().getStepExecution().getJobExecution()
-                .getExecutionContext().get("leagues");
+        Map<League, LeagueRanking> leagues = (Map<League, LeagueRanking>) chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().get("leagues");
         if (leagues == null) {
             throw new UnsupportedOperationException("Object 'leagues' cannot be null here");
         }
         List<MpgUser> usersTmp = new ArrayList<>();
         for (LeagueRanking lr : leagues.values()) {
             List<MpgUser> currentTeamUsers = lr.getTeams().values().stream()
-                    .map(team -> new MpgUser(Long.valueOf(team.getUserId().substring(team.getUserId().lastIndexOf('_') + 1)),
-                            team.getFirstName() + " " + team.getLastName()))
+                    .map(team -> new MpgUser(Long.valueOf(team.getUserId().substring(team.getUserId().lastIndexOf('_') + 1)), team.getFirstName() + " " + team.getLastName()))
                     .collect(Collectors.toList());
             if (usersTmp.isEmpty()) {
                 usersTmp.addAll(currentTeamUsers);

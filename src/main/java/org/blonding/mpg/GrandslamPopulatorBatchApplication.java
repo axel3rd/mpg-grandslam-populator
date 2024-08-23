@@ -14,7 +14,6 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.listener.ExecutionContextPromotionListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -25,11 +24,11 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 public class GrandslamPopulatorBatchApplication {
 
-    @Autowired
-    private StepBuilderFactory steps;
+    private final StepBuilderFactory steps;
 
-    GrandslamPopulatorBatchApplication() {
+    GrandslamPopulatorBatchApplication(StepBuilderFactory steps) {
         super();
+        this.steps = steps;
     }
 
     public static void main(String[] args) {
@@ -67,9 +66,8 @@ public class GrandslamPopulatorBatchApplication {
     }
 
     @Bean
-    public Job jobGrandSlamPopulator(JobBuilderFactory jobBuilderFactory, MpgDatasTasklet mpgDatas, WhichUsersTasklet whichUsers,
-            DataBaseUpdateUsersTasklet dataBaseUpdateUsers, DataBaseUpdateLeaguesTasklet dataBaseUpdateLeagues,
-            DataBaseUpdateRankingTeamsTasklet dataBaseUpdateRankingTeams, DataBaseUpdateGrandSlamDaysTasklet dataBaseUpdateGrandSlamDays) {
+    public Job jobGrandSlamPopulator(JobBuilderFactory jobBuilderFactory, MpgDatasTasklet mpgDatas, WhichUsersTasklet whichUsers, DataBaseUpdateUsersTasklet dataBaseUpdateUsers,
+            DataBaseUpdateLeaguesTasklet dataBaseUpdateLeagues, DataBaseUpdateRankingTeamsTasklet dataBaseUpdateRankingTeams, DataBaseUpdateGrandSlamDaysTasklet dataBaseUpdateGrandSlamDays) {
         JobBuilder jobBuilder = jobBuilderFactory.get("jobGrandSlamPopulator");
         Step stepMpgDatas = stepMpgDatas(mpgDatas);
         Step stepWhichUsers = stepWhichUsers(whichUsers);
@@ -77,9 +75,8 @@ public class GrandslamPopulatorBatchApplication {
         Step stepDataBaseUpdateLeagues = stepDataBaseUpdateLeagues(dataBaseUpdateLeagues);
         Step stepDataBaseUpdateRankingTeams = stepDataBaseUpdateRankingTeams(dataBaseUpdateRankingTeams);
         Step stepDataBaseUpdateGrandSlamDays = stepDataBaseUpdateGrandSlamDays(dataBaseUpdateGrandSlamDays);
-        return jobBuilder.start(stepMpgDatas).next(stepWhichUsers).on(ExitStatus.STOPPED.getExitCode()).end().on(ExitStatus.COMPLETED.getExitCode())
-                .to(stepDataBaseUpdateUsers).next(stepDataBaseUpdateLeagues).next(stepDataBaseUpdateRankingTeams)
-                .next(stepDataBaseUpdateGrandSlamDays).end().build();
+        return jobBuilder.start(stepMpgDatas).next(stepWhichUsers).on(ExitStatus.STOPPED.getExitCode()).end().on(ExitStatus.COMPLETED.getExitCode()).to(stepDataBaseUpdateUsers)
+                .next(stepDataBaseUpdateLeagues).next(stepDataBaseUpdateRankingTeams).next(stepDataBaseUpdateGrandSlamDays).end().build();
     }
 
     @Bean

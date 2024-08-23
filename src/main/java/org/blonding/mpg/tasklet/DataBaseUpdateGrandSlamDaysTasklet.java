@@ -30,11 +30,16 @@ public class DataBaseUpdateGrandSlamDaysTasklet implements Tasklet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataBaseUpdateGrandSlamDaysTasklet.class);
 
-    @Autowired
-    private GrandSlamRepository grandSlamRepository;
+    private final GrandSlamRepository grandSlamRepository;
+
+    private final GrandSlamDayRepository grandSlamDayRepository;
 
     @Autowired
-    private GrandSlamDayRepository grandSlamDayRepository;
+    private DataBaseUpdateGrandSlamDaysTasklet(GrandSlamRepository grandSlamRepository, GrandSlamDayRepository grandSlamDayRepository) {
+        super();
+        this.grandSlamRepository = grandSlamRepository;
+        this.grandSlamDayRepository = grandSlamDayRepository;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
@@ -62,8 +67,7 @@ public class DataBaseUpdateGrandSlamDaysTasklet implements Tasklet {
         }
 
         // Sort by pts and golf diff
-        List<PlayerDayJson> playersOrdered = players.values().stream()
-                .sorted(Comparator.comparingInt(PlayerDayJson::getPts).thenComparingInt(PlayerDayJson::getDiff).reversed())
+        List<PlayerDayJson> playersOrdered = players.values().stream().sorted(Comparator.comparingInt(PlayerDayJson::getPts).thenComparingInt(PlayerDayJson::getDiff).reversed())
                 .collect(Collectors.toCollection(ArrayList::new));
 
         // Add position
@@ -81,7 +85,9 @@ public class DataBaseUpdateGrandSlamDaysTasklet implements Tasklet {
         gsd.setLabel(label);
         gsd.setPlayers(playersOrdered);
 
-        LOG.info("Updating '{}': {}", label, getListString(playersOrdered));
+        if (LOG.isInfoEnabled()) {
+            LOG.info("Updating '{}': {}", label, getListString(playersOrdered));
+        }
         grandSlamDayRepository.save(gsd);
         return RepeatStatus.FINISHED;
     }

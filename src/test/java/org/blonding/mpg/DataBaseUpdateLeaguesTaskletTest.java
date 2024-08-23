@@ -29,7 +29,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
     private LeagueRepository leagueRepository;
 
     @Test
-    void update() throws Exception {
+    void update() {
         mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
@@ -41,7 +41,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
     }
 
     @Test
-    void delete() throws Exception {
+    void delete() {
         mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();
@@ -57,7 +57,7 @@ class DataBaseUpdateLeaguesTaskletTest extends AbstractTestMpgData {
     }
 
     @Test
-    void add() throws Exception {
+    void add() {
         mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         GrandSlam gs = grandSlamRepository.findOne(Example.of(GrandSlam.fromCurrentRunning())).orElseThrow();

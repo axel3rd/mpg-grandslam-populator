@@ -20,7 +20,7 @@ class WhichUsersTaskletTest extends AbstractTestMpgData {
     private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
-    void defaults() throws Exception {
+    void defaults() {
         mockMpgBackend("20210813", "MLAX7HMK", "MLEFEX6G", "MN7VSYBM", "LJV92C9Y", "LLK82D34");
 
         JobExecution jobExecutionMpgData = jobLauncherTestUtils.launchStep("stepMpgDatas");
